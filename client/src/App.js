@@ -1,6 +1,19 @@
 import React, {useEffect, useState} from 'react'
+import {
+  ChakraProvider,
+  // Box,
+  // Text,
+  // Link,
+  // VStack,
+  // Code,
+  // Grid,
+  theme,
+} from '@chakra-ui/react';
+// import { ColorModeSwitcher } from './ColorModeSwitcher';
+// import { Logo } from './Logo';
 
 function App() {
+
 
   const [backendData, setBackendData] = useState([{}])
 
@@ -13,22 +26,20 @@ function App() {
       }
     )
   }, [])
-    
-
-
+  
   return (
-    <div>
-
-      {(typeof backendData.testData === 'undefined') ? (
-        <p>Loading...</p>
-      ): (
-        backendData.testData.map((test, i) => (
-          <p key={i}>{test}</p>
-        ))
-      )}
-
-    </div>
-  )
+    <ChakraProvider theme={theme}>
+      <div>
+        {(typeof backendData.testData === 'undefined') ? (
+          <p>Loading...</p>
+        ): (
+          backendData.testData.map((test, i) => (
+            <p key={i}>{test}</p>
+          ))
+        )}
+      </div>
+    </ChakraProvider>
+  );
 }
 
 export default App;

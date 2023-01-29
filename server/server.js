@@ -4,7 +4,7 @@ const PORT = 5001;
 
 
 app.get("/api", (req, res) => {
-    res.json({"testData": ['testOne', "testTwo", "testThree"]})
+    res.json({"testData": ['testOne', "testTwo", "testThree", "testFour"]})
 })
 
 app.listen(PORT, () => (
