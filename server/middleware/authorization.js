@@ -8,7 +8,7 @@ const url = require('url');
 const router = express.Router();
 router.use(bodyParser.json());
 
-const { CLIENT_ID, CLIENT_SECRET } = require('./constants');
+const { CLIENT_ID, CLIENT_SECRET } = require('./gcloudLogin');
 const REDIRECT_URL = 'http://localhost:5001/oauth';
 const OAUTH2CLIENT = new google.auth.OAuth2(
     CLIENT_ID,
