@@ -9,12 +9,12 @@ import {
   // Grid,
   theme,
 } from '@chakra-ui/react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { UserLogin } from './Pages';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
 
 function App() {
-
-
   const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
@@ -30,6 +30,11 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <div>
+        <Router>
+            <Routes>
+                <Route path='/LoginPage' element={<UserLogin/>}></Route>
+            </Routes>
+        </Router>
         {(typeof backendData.testData === 'undefined') ? (
           <p>Loading...</p>
         ): (
