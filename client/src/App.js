@@ -10,7 +10,7 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { UserLogin } from './Pages';
+import { userLogin } from './pages';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
 

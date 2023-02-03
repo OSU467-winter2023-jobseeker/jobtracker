@@ -70,3 +70,9 @@ function getUserInfo(token) {
             throw error;
         });
 };
+
+module.exports = {
+    getAuthorizationUrl,
+    getServerToken,
+    getUserInfo
+};
