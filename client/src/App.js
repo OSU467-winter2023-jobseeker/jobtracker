@@ -10,7 +10,7 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { userLogin } from './pages';
+import { UserLogin } from './pages';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
 
@@ -32,16 +32,16 @@ function App() {
       <div>
         <Router>
             <Routes>
-                <Route path='/LoginPage' element={<UserLogin/>}></Route>
+                <Route path='/UserLogin' element={<UserLogin/>}></Route>
             </Routes>
         </Router>
-        {(typeof backendData.testData === 'undefined') ? (
+        {/* {(typeof backendData.testData === 'undefined') ? (
           <p>Loading...</p>
         ): (
           backendData.testData.map((test, i) => (
             <p key={i}>{test}</p>
           ))
-        )}
+        )} */}
       </div>
     </ChakraProvider>
   );
