@@ -1,11 +1,11 @@
 import { Box, Center, Container, Flex, VStack, Text, Heading } from '@chakra-ui/react';
-import RedirectGoogleButton from '../components/RedirectGoogleButton';
+import ContactsTable from '../components/ContactsTable';
 
-function Contacts() { 
+function Contacts() {
     return (
-        <Flex align='center' justify='center' height='100vh'>
-            <div>Contacts Page</div>
-        </Flex>
+        <Center>
+            <ContactsTable />
+        </Center>
     )
 };
 
