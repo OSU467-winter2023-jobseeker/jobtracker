@@ -10,6 +10,8 @@ import {
     TableContainer,
 } from '@chakra-ui/react'
 
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
+
 function ContactsTable() {
     return (
         <TableContainer>
@@ -23,6 +25,8 @@ function ContactsTable() {
                         <Th>Email</Th>
                         <Th>Phone Number</Th>
                         <Th>Last Contacted Date</Th>
+                        <Th>Edit</Th>
+                        <Th>Delete</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -33,6 +37,8 @@ function ContactsTable() {
                         <Td>example@google.com</Td>
                         <Td>123-456-7890</Td>
                         <Td>01/01/23</Td>
+                        <Td><EditIcon /></Td>
+                        <Td><DeleteIcon /></Td>
                     </Tr>
                     <Tr>
                         <Td>Google</Td>
@@ -41,6 +47,8 @@ function ContactsTable() {
                         <Td>example@google.com</Td>
                         <Td>123-456-7890</Td>
                         <Td>01/01/23</Td>
+                        <Td><EditIcon /></Td>
+                        <Td><DeleteIcon /></Td>
                     </Tr>
                     <Tr>
                         <Td>Google</Td>
@@ -49,6 +57,8 @@ function ContactsTable() {
                         <Td>example@google.com</Td>
                         <Td>123-456-7890</Td>
                         <Td>01/01/23</Td>
+                        <Td><EditIcon /></Td>
+                        <Td><DeleteIcon /></Td>
                     </Tr>
                 </Tbody>
                 <Tfoot>
@@ -59,6 +69,8 @@ function ContactsTable() {
                         <Th>Email</Th>
                         <Th>Phone Number</Th>
                         <Th>Last Contacted Date</Th>
+                        <Th>Edit</Th>
+                        <Th>Delete</Th>
                     </Tr>
                 </Tfoot>
             </Table>
