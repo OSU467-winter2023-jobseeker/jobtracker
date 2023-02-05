@@ -10,7 +10,7 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { UserLogin } from './pages';
+import { UserLogin, Contacts } from './pages';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
 
@@ -33,6 +33,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path='/UserLogin' element={<UserLogin/>}></Route>
+                <Route path='/Contacts' element={<Contacts/>}></Route>
             </Routes>
         </Router>
         {/* {(typeof backendData.testData === 'undefined') ? (
