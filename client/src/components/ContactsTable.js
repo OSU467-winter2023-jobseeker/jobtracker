@@ -10,13 +10,15 @@ import {
     TableContainer,
 } from '@chakra-ui/react'
 
-import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
+import ReadOnlyContactsRow from './ReadOnlyContactsRow';
+
 
 function ContactsTable() {
     return (
         <TableContainer>
             <Table variant='striped' colorScheme='teal'>
-                <TableCaption>Imperial to metric conversion factors</TableCaption>
+                <TableCaption>List of people you have networked with!</TableCaption>
                 <Thead>
                     <Tr>
                         <Th>Company</Th>
@@ -30,36 +32,9 @@ function ContactsTable() {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr>
-                        <Td>Google</Td>
-                        <Td>John Smith</Td>
-                        <Td>Software Developer</Td>
-                        <Td>example@google.com</Td>
-                        <Td>123-456-7890</Td>
-                        <Td>01/01/23</Td>
-                        <Td><EditIcon /></Td>
-                        <Td><DeleteIcon /></Td>
-                    </Tr>
-                    <Tr>
-                        <Td>Google</Td>
-                        <Td>John Smith</Td>
-                        <Td>Software Developer</Td>
-                        <Td>example@google.com</Td>
-                        <Td>123-456-7890</Td>
-                        <Td>01/01/23</Td>
-                        <Td><EditIcon /></Td>
-                        <Td><DeleteIcon /></Td>
-                    </Tr>
-                    <Tr>
-                        <Td>Google</Td>
-                        <Td>John Smith</Td>
-                        <Td>Software Developer</Td>
-                        <Td>example@google.com</Td>
-                        <Td>123-456-7890</Td>
-                        <Td>01/01/23</Td>
-                        <Td><EditIcon /></Td>
-                        <Td><DeleteIcon /></Td>
-                    </Tr>
+                    <ReadOnlyContactsRow />
+                    <ReadOnlyContactsRow />
+                    <ReadOnlyContactsRow />
                 </Tbody>
                 <Tfoot>
                     <Tr>
