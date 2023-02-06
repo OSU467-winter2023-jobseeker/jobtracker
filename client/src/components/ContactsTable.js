@@ -18,7 +18,7 @@ function ContactsTable() {
     return (
         <TableContainer>
             <Table variant='striped' colorScheme='teal'>
-                <TableCaption>Imperial to metric conversion factors</TableCaption>
+                <TableCaption>List of people you have networked with!</TableCaption>
                 <Thead>
                     <Tr>
                         <Th>Company</Th>
