@@ -10,7 +10,7 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { UserLogin, Contacts } from './pages';
+import { Contacts, Landing, UserLogin } from './pages';
 import WithSubnavigation from './components/NavigationBar';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
@@ -34,6 +34,7 @@ function App() {
         <div>
           <WithSubnavigation />
           <Routes>
+            <Route path='/' element={<Landing />}></Route>
             <Route path='/UserLogin' element={<UserLogin />}></Route>
             <Route path='/Contacts' element={<Contacts />}></Route>
           </Routes>
