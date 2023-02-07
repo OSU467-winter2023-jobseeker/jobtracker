@@ -1,16 +1,17 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex, Text, HStack } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
-function LandingRow({ button, text }) { 
+function LandingRow ({ button, text }) { 
     return (
-        <Flex>
-            <Button leftIcon={<FcGoogle />}>
+        <HStack spacing='50'  border='4px' borderColor='thistle' >
+        {/* // <Flex align='center' borderColor='lightblue.100'> */}
+            <Button p='8' align='left' background='darkgoldenrod' textColor='white' fontSize='lg'>
                 {button}
             </Button>
-            <Text>
+            <Text p='10' fontSize='lg'>
                 {text}
             </Text>
-        </Flex>
+        </HStack>
     )
 };
 
