@@ -1,12 +1,12 @@
-import { Box, Center, Container, Flex, VStack, Text, Heading } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import LandingRow from '../components/LandingRow';
 import LargeHeading from '../components/LargeHeading';
 
 function Landing() { 
     return (
-        <Box>
+        <Box marginTop='20'>
             <LargeHeading text='Track-em-jobs - Start Tracking Now!'></LargeHeading>
-            <VStack p={8} border='8px'>
+            <VStack p='10' spacing='6'>
                 <LandingRow 
                     button='My Applications' 
                     text='Here you can track all of your job applications in an
