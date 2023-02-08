@@ -2,7 +2,7 @@ import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGrou
 import ContactsTable from '../components/ContactsTable';
 import AddContactRow from '../components/AddContactRow';
 
-function Contacts() {
+function JobApplications() {
     return (
         <VStack>
             <Box>
@@ -23,4 +23,4 @@ function Contacts() {
     )
 };
 
-export default Contacts;
+export default JobApplications;
