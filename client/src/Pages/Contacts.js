@@ -1,6 +1,5 @@
 import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup } from '@chakra-ui/react';
 import ContactsTable from '../components/ContactsTable';
-import ContactsAddModal from '../components/ContactsAddModal';
 import AddContactRow from '../components/AddContactRow';
 
 import { Button } from '@chakra-ui/react';
