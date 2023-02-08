@@ -1,21 +1,21 @@
 import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup } from '@chakra-ui/react';
-import ContactsTable from '../components/ContactsTable';
-import AddContactRow from '../components/AddContactRow';
+import JobAppsTable from '../components/JobAppsTable';
+import AddJobAppsRow from '../components/AddJobAppsRow';
 
 function JobApplications() {
     return (
         <VStack>
             <Box>
                 <Center>
-                    <ContactsTable />
+                    <JobAppsTable />
                 </Center>
             </Box>
             <Divider />
             <Box>
                 <Center>
-                    <div>Add a new contact:</div>
+                    <div>Add a new job application:</div>
                 </Center>
-                <AddContactRow />
+                <AddJobAppsRow />
             </Box>
 
         </VStack>
