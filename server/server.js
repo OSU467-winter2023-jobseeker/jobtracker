@@ -11,9 +11,14 @@ app.use(
   })
 )
 
-app.get('/', (request, response) => {
-    response.json({ info: 'Job Tracker Page' })
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
   })
+
+
+// app.get('/', (request, response) => {
+//     response.json({ info: 'Job Tracker Page' })
+//   })
 app.get("/applications", db.getApplications)
 app.post("/application", db.createApplication)
 app.put("/application/:id", db.updateApplication)
