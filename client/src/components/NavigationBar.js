@@ -55,7 +55,7 @@ import {
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
               color={useColorModeValue('gray.800', 'white')}>
-              Track-Em-Jobs
+              <Link href='/'>Track-Em-Jobs</Link>
             </Text>
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -257,7 +257,7 @@ import {
         {
           label: 'Job Applications List',
           subLabel: 'View a table list of your job applications',
-          href: '#',
+          href: '/JobApplications',
         },
         {
           label: 'Add New Job Application',
@@ -272,7 +272,7 @@ import {
         {
           label: 'Job Contacts',
           subLabel: 'View a table list of your job contacts',
-          href: '/contacts',
+          href: '/Contacts',
         },
         {
           label: 'Add New Job Contact',

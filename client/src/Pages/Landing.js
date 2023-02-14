@@ -8,21 +8,24 @@ function Landing() {
             <LargeHeading text='Track-em-jobs - Start Tracking Now!'></LargeHeading>
             <VStack p='10' spacing='6'>
                 <LandingRow 
-                    button='My Applications' 
-                    text='Here you can track all of your job applications in an
-                        easy-to-read spreadsheet style page.'>
+                    buttonText='My Applications' 
+                    description='Here you can track all of your job applications in an
+                        easy-to-read spreadsheet style page.'
+                    link='/JobApplications'>
                 </LandingRow>
                 <LandingRow 
-                    button='My Contacts' 
-                    text='Up your networking game with this helpful tool to 
+                    buttonText='My Contacts' 
+                    description='Up your networking game with this helpful tool to 
                     track your networking contacts and their relationships to
-                    your applications.'>
+                    your applications.'
+                    link='/Contacts'>
                 </LandingRow>
                 <LandingRow 
-                    button='Job Skills'
-                    text='See how often skills are mentioned in each of your 
+                    buttonText='Job Skills'
+                    description='See how often skills are mentioned in each of your 
                     current applications and view jobs based on the skills 
-                    they require.'>
+                    they require.'
+                    link='/UserLogin'>
                 </LandingRow>
             </VStack>
         </Box>
