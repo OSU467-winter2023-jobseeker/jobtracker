@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   ChakraProvider,
   // Box,
@@ -10,7 +10,8 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { UserLogin } from './pages';
+import { Contacts, Landing, UserLogin, JobApplications } from './pages';
+import WithSubnavigation from './components/NavigationBar';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
 
@@ -26,23 +27,27 @@ function App() {
       }
     )
   }, [])
-  
+
   return (
     <ChakraProvider theme={theme}>
-      <div>
-        <Router>
-            <Routes>
-                <Route path='/UserLogin' element={<UserLogin/>}></Route>
-            </Routes>
-        </Router>
-        {/* {(typeof backendData.testData === 'undefined') ? (
+      <Router>
+        <div>
+          <WithSubnavigation />
+          <Routes>
+            <Route path='/' element={<Landing />}></Route>
+            <Route path='/UserLogin' element={<UserLogin />}></Route>
+            <Route path='/Contacts' element={<Contacts />}></Route>
+            <Route path='/JobApplications' element={<JobApplications />}></Route>
+          </Routes>
+        </div>
+      </Router>
+      {/* {(typeof backendData.testData === 'undefined') ? (
           <p>Loading...</p>
         ): (
           backendData.testData.map((test, i) => (
             <p key={i}>{test}</p>
           ))
         )} */}
-      </div>
     </ChakraProvider>
   );
 }
