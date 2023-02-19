@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS "applications" (
   "application_deadline" timestamp NOT NULL,
   "location" varchar,
   "url" varchar,
+  "skills" varchar,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );
