@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS "contacts" (
   "email" varchar,
   "phone_number" varchar,
   "linkedin_url" varchar,
+  "notes" varchar,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );

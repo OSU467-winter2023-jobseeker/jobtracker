@@ -23,8 +23,8 @@ const getApplications = (request, response) => {
 const createApplication = (request, response) => {
     const data = request.body
 
-    pool.query('INSERT INTO applications (user_id, contact_id, employer, employment_type, application_status, application_deadline, location, url, skills) VALUES ($1, $2)', 
-    [data.user_id, data.contact_id, data.employer, data.employment_type, data.application_type, data.application_status, data.application_deadline, data.location, data.url, data.skills], 
+    pool.query('INSERT INTO applications (contact_id, employer, employment_type, application_status, application_deadline, location, url, skills, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', 
+    [data.contact_id, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes], 
     (error, results) => {
         if (error) {
             throw error

@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     application_deadline: DataTypes.DATE,
     location: DataTypes.STRING,
     url: DataTypes.STRING,
-    skills: DataTypes.STRING
+    skills: DataTypes.STRING,
+    notes: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'applications',
