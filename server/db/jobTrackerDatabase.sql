@@ -43,17 +43,17 @@ CREATE TABLE IF NOT EXISTS "contacts" (
   "updated_at" timestamp DEFAULT (now())
 );
 
-ALTER TABLE "skills" ADD FOREIGN KEY ("application_id") REFERENCES "applications" ("application_id");
-
-ALTER TABLE "applications" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
-
-ALTER TABLE "contacts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
-
 CREATE TABLE IF NOT EXISTS "applications_contacts" (
   "applications_contact_id" int REFERENCES applications (application_id) ON UPDATE CASCADE ON DELETE CASCADE,
   "contacts_contact_id" int REFERENCES contacts (contacts_id) ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT application_contact_pkey PRIMARY KEY ("applications_contact_id", "contacts_contact_id")
 );
+
+ALTER TABLE "skills" ADD FOREIGN KEY ("application_id") REFERENCES "applications" ("application_id");
+
+ALTER TABLE "applications" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
+
+ALTER TABLE "contacts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
 
 ALTER TABLE "applications_contacts" ADD FOREIGN KEY ("applications_contact_id") REFERENCES "applications" ("application_id");
 
