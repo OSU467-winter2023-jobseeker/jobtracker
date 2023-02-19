@@ -36,6 +36,9 @@ module.exports = {
       skills: {
         type: Sequelize.STRING
       },
+      date_applied: {
+        type: Sequelize.DATE
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

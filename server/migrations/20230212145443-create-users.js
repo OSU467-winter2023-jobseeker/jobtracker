@@ -9,10 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      first_name: {
+      user_id: {
         type: Sequelize.STRING
       },
-      last_name: {
+      full_name: {
         type: Sequelize.STRING
       },
       email: {

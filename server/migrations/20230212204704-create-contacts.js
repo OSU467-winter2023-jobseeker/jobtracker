@@ -15,10 +15,10 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      first_name: {
+      full_name: {
         type: Sequelize.STRING
       },
-      last_name: {
+      position: {
         type: Sequelize.STRING
       },
       email: {

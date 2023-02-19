@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     location: DataTypes.STRING,
     url: DataTypes.STRING,
     skills: DataTypes.STRING,
-    notes: DataTypes.STRING
+    notes: DataTypes.STRING,
+    date_applied: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'applications',
