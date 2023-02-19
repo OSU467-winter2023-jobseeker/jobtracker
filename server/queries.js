@@ -1,15 +1,18 @@
-// const Pool = require('pg').Pool
-// const pool = new Pool({
-//   user: 'me',
-//   host: 'localhost',
-//   database: 'api',
-//   password: 'password',
-//   port: 5432,
-// })
+const dotenv = require('dotenv');
+dotenv.config();
+
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: 'postgres',
+  host: process.env.DB_HOST,
+  database: 'postgres',
+  password: process.env.DB_PASS,
+  port: 5432,
+})
 
 
 const getApplications = (request, response) => {
-    pool.query('SELECT * FROM applications ORDER BY created_date DESC', (error, results) => {
+    pool.query('SELECT * FROM applications ORDER BY created_at DESC', (error, results) => {
         if (error) {
             throw error
         }
@@ -18,9 +21,11 @@ const getApplications = (request, response) => {
 }
 
 const createApplication = (request, response) => {
-    const { x, y } = request.body
+    const data = request.body
 
-    pool.query('INSERT INTO applications (x, y) VALUES ($1, $2)', [x, y], (error, results) => {
+    pool.query('INSERT INTO applications (user_id, contact_id, employer, employment_type, application_status, application_deadline, location, url) VALUES ($1, $2)', 
+    [data.user_id, data.contact_id, data.employer, data.employment_type, data.application_type, data.application_status, data.application_deadline, data.location, data.url], 
+    (error, results) => {
         if (error) {
             throw error
         }
@@ -30,7 +35,7 @@ const createApplication = (request, response) => {
 
 const updateApplication = (request, response) => {
     const id = parseInt(request.params.id)
-    const { x, y } = request.body
+    const data = request.body
 
     pool.query(
         'UPDATE applications SET x = $1, y = $2 WHERE id = $3',
