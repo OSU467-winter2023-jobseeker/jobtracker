@@ -13,6 +13,7 @@ const pool = new Pool({
 
 const getApplications = (request, response) => {
     pool.query('SELECT * FROM applications ORDER BY created_at DESC', (error, results) => {
+        // console.log(request);
         if (error) {
             throw error
         }
