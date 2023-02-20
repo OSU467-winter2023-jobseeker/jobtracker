@@ -1,19 +1,21 @@
 const db = require("./queries")
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser')
 const app = express();
 const PORT = 5001;
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 )
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-  })
+// app.get("/*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   })
 
 
 // app.get('/', (request, response) => {

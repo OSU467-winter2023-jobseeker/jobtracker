@@ -6,9 +6,9 @@ module.exports = {
     return queryInterface.bulkInsert('contacts', [{
       application_id: 7,
       user_id: 5,
-      first_name: "Bob",
-      last_name: "Googler",
-      email: "varchar",
+      full_name: "Bob Googler",
+      position: 'GCP Manager',
+      email: "varchar@varchar.com",
       phone_number: "555-675-8855",
       linkedin_url: "http://linkedin.com/in/bob-googler",
       created_at: new Date(),

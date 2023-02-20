@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       application_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       skill: {
         type: Sequelize.STRING

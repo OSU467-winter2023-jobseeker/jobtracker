@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       contact_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       employer: {
         type: Sequelize.STRING
@@ -32,6 +32,12 @@ module.exports = {
       },
       url: {
         type: Sequelize.STRING
+      },
+      skills: {
+        type: Sequelize.STRING
+      },
+      date_applied: {
+        type: Sequelize.DATE
       },
       created_at: {
         allowNull: false,
