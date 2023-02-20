@@ -12,7 +12,7 @@ import {
 import ReadOnlyJobAppsRow from './ReadOnlyJobAppsRow';
 
 
-function JobAppsTable() {
+function JobAppsTable({jobApplications}) {
     return (
         <TableContainer>
             <Table variant='striped' colorScheme='teal'>
@@ -33,12 +33,12 @@ function JobAppsTable() {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <ReadOnlyJobAppsRow />
-                    <ReadOnlyJobAppsRow />
-                    <ReadOnlyJobAppsRow />
-                    <ReadOnlyJobAppsRow />
-                    <ReadOnlyJobAppsRow />
-                    <ReadOnlyJobAppsRow />
+                {
+                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} key={i}/>) : <p></p>
+                }
+                {/* {
+                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} onEdit={onEdit} key={i}/>) : <p></p>
+                }    */}
                 </Tbody>
                 <Tfoot>
                     <Tr>

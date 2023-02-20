@@ -31,7 +31,7 @@ function App() {
 
   // Load Job Applications Data
   const loadJobApplications = async () => {
-		const response = await fetch("/jobApplications");
+		const response = await fetch("/applications");
 		const data = await response.json();
 		if (response.status === 200) {
 			setJobApplications(data);

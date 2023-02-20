@@ -3,11 +3,11 @@ import JobAppsTable from '../components/JobAppsTable';
 import AddJobAppsRow from '../components/AddJobAppsRow';
 import { useEffect, useState } from 'react';
 
-function JobApplications(jobApplications, loadJobApplications) {
+function JobApplications({jobApplications, loadJobApplications}) {
     // Use effect to load the job applications data
-    // useEffect(() => {
-    //     loadJobApplications();
-    // },[]);
+    useEffect(() => {
+        loadJobApplications();
+    },[]);
 
     // Add useState
     const [addJobApplication, setAddJobApplication] = useState({
@@ -53,7 +53,7 @@ function JobApplications(jobApplications, loadJobApplications) {
         <VStack>
             <Box>
                 <Center>
-                    <JobAppsTable />
+                    <JobAppsTable jobApplications={jobApplications}/>
                 </Center>
             </Box>
             <Divider />
