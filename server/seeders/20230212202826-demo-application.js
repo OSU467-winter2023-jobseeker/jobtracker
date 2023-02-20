@@ -12,6 +12,7 @@ module.exports = {
       date_applied: new Date('02-02-2023'),
       location: "Houston, TX",
       url: "https://careers.google.com/jobs/results/83234373689582278/",
+      contact_name: 'Bob Googler',
       created_at: new Date(),
       updated_at: new Date()
     },
@@ -24,6 +25,7 @@ module.exports = {
       date_applied: new Date('02-02-2023'),
       location: "Houston, TX",
       url: "https://careers.google.com/jobs/results/83234373689582278/",
+      contact_name: 'Bob Googler',
       created_at: new Date(),
       updated_at: new Date()
     },{
@@ -35,6 +37,7 @@ module.exports = {
       date_applied: new Date('02-02-2023'),
       location: "Houston, TX",
       url: "https://careers.google.com/jobs/results/83234373689582278/",
+      contact_name: 'Bob Googler',
       created_at: new Date(),
       updated_at: new Date()
     },
@@ -47,6 +50,7 @@ module.exports = {
       date_applied: new Date('02-02-2023'),
       location: "Houston, TX",
       url: "https://careers.google.com/jobs/results/83234373689582278/",
+      contact_name: 'Bob Googler',
       created_at: new Date(),
       updated_at: new Date()
     },
@@ -59,6 +63,7 @@ module.exports = {
       date_applied: new Date('02-02-2023'),
       location: "Houston, TX",
       url: "https://careers.google.com/jobs/results/83234373689582278/",
+      contact_name: 'Bob Googler',
       created_at: new Date(),
       updated_at: new Date()
     }

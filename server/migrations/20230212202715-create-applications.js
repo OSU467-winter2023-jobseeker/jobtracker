@@ -12,8 +12,8 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      contact_id: {
-        type: Sequelize.INTEGER
+      contact_name: {
+        type: Sequelize.STRING
       },
       employer: {
         type: Sequelize.STRING
