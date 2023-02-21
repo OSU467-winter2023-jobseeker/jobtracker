@@ -50,6 +50,14 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                 />
                 <Input
                     type="text"
+                    name="location"
+                    required="required"
+                    placeholder="Enter location..."
+                    value={addJobApplication.location}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, location: e.target.value})}
+                />
+                <Input
+                    type="text"
                     name="skills"
                     required="required"
                     placeholder="Enter skills (separated by commas)"
