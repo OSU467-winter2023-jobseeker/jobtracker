@@ -19,16 +19,6 @@ function App() {
   const [backendData, setBackendData] = useState([{}]);
   const [jobApplications, setJobApplications] = useState([]);
 
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])
-
   // Load Job Applications Data
   const loadJobApplications = async () => {
     const response = await fetch("/applications");
