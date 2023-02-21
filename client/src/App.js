@@ -36,7 +36,7 @@ function App() {
   // Load Skills Data
 
   return (
-    <ChakraProvider theme={theme}>∂
+    <ChakraProvider theme={theme}>
       <Router>
         <div>
           <WithSubnavigation />
