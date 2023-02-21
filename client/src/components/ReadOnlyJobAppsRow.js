@@ -1,11 +1,12 @@
 import React from 'react';
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
+import DeleteButton from './Buttons/DeleteButton';
 import {
     Tr,
     Td,
 } from '@chakra-ui/react'
 
-function ReadOnlyJobAppsRow({data}) {
+function ReadOnlyJobAppsRow({data, onDelete}) {
     // Pass in contacts, handler for edit, handler for delete
     return (
         <Tr>
@@ -16,15 +17,15 @@ function ReadOnlyJobAppsRow({data}) {
             <Td>{data.url}</Td>
             <Td>{data.location}</Td>
             <Td>{data.skills}</Td>
-            <Td>Johnny Appleseed</Td>
-            <Td>Interview went well!</Td>
+            <Td>{data.contact_name}</Td>
+            <Td>{data.notes}</Td>
             <Td><EditIcon /></Td>
 
             {/* <Td>
                 <EditIcon onClick={(e) => handleEditClick(e, contact)}/>
             </Td> */}
 
-            <Td><DeleteIcon /></Td>
+            <Td><DeleteButton id={data.application_id}/></Td>
            
             {/* <Td>
                 <DeleteIcon onClick={() => handleDeleteClick(contact.id)}/>

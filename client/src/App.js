@@ -19,26 +19,16 @@ function App() {
   const [backendData, setBackendData] = useState([{}]);
   const [jobApplications, setJobApplications] = useState([]);
 
-  useEffect(() => {
-    fetch("/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])
-
   // Load Job Applications Data
   const loadJobApplications = async () => {
-		const response = await fetch("/applications");
-		const data = await response.json();
-		if (response.status === 200) {
-			setJobApplications(data);
-		} else {
-			alert(`Failed to fetch job applications, status code = ${response.status}`);
-		}
-	};
+    const response = await fetch("/applications");
+    const data = await response.json();
+    if (response.status === 200) {
+      setJobApplications(data);
+    } else {
+      alert(`Failed to fetch job applications, status code = ${response.status}`);
+    }
+  };
 
   // Load Contacts Applications Data
 
@@ -54,8 +44,12 @@ function App() {
             <Route path='/' element={<Landing />}></Route>
             <Route path='/UserLogin' element={<UserLogin />}></Route>
             <Route path='/Contacts' element={<Contacts />}></Route>
-            <Route path='/JobApplications' 
-              element={<JobApplications jobApplications={jobApplications} loadJobApplications={loadJobApplications}/>}>
+            <Route path='/JobApplications'
+              element={<JobApplications
+                jobApplications={jobApplications}
+                setJobApplications={setJobApplications}
+                loadJobApplications={loadJobApplications}
+              />}>
             </Route>
           </Routes>
         </div>

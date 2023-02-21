@@ -12,7 +12,13 @@ import {
 import ReadOnlyJobAppsRow from './ReadOnlyJobAppsRow';
 
 
-function JobAppsTable({jobApplications}) {
+function JobAppsTable({jobApplications, setJobApplications}) {
+
+    const onDelete = (id) => {
+        const newApplications = jobApplications.filter((val) => val.application_id !== id);
+        setJobApplications(newApplications);
+    }
+
     return (
         <TableContainer>
             <Table variant='striped' colorScheme='teal'>
@@ -34,7 +40,7 @@ function JobAppsTable({jobApplications}) {
                 </Thead>
                 <Tbody>
                 {
-                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} key={i}/>) : <p></p>
+                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} key={i}/>) : <p></p>
                 }
                 {/* {
                     jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} onEdit={onEdit} key={i}/>) : <p></p>
