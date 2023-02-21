@@ -16,8 +16,8 @@ function ReadOnlyJobAppsRow({data}) {
             <Td>{data.url}</Td>
             <Td>{data.location}</Td>
             <Td>{data.skills}</Td>
-            <Td>Johnny Appleseed</Td>
-            <Td>Interview went well!</Td>
+            <Td>{data.contact_name}</Td>
+            <Td>{data.notes}</Td>
             <Td><EditIcon /></Td>
 
             {/* <Td>
