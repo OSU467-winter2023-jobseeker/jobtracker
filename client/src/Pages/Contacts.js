@@ -3,7 +3,7 @@ import ContactsTable from '../components/ContactsTable';
 import AddContactRow from '../components/AddContactRow';
 import React, { useEffect, useState } from 'react';
 
-function Contacts({ loadContacts }) {
+function Contacts({ loadContacts, contacts, setContacts }) {
     // Use effect to load the contacts data
     useEffect(() => {
         loadContacts();
@@ -31,7 +31,10 @@ function Contacts({ loadContacts }) {
         <VStack>
             <Box>
                 <Center>
-                    <ContactsTable />
+                    <ContactsTable
+                        contacts={contacts}
+                        setContacts={setContacts}
+                    />
                 </Center>
             </Box>
             <Divider />
