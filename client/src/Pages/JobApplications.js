@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup } from '@chakra-ui/react';
+import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup, Button } from '@chakra-ui/react';
 import JobAppsTable from '../components/JobAppsTable';
 import AddJobAppsRow from '../components/AddJobAppsRow';
 import { useEffect, useState } from 'react';
@@ -27,22 +27,11 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
     // Delete handlers
 
     // Add handlers
-    const handleAddFormChange = (e) => {
-        e.preventDefault();
-
-        const fieldName = e.target.getAttribute("name");
-        const fieldValue = e.target.value;
-
-        const newJobApplicationData = { ...addJobApplication };
-        newJobApplicationData[fieldName] = fieldValue;
-
-        setAddJobApplication(newJobApplicationData);
-    };
-
     const handleAddFormSubmit = (e) => {
         e.preventDefault();
 
         const newJobApplication = { ...addJobApplication };
+        console.log(addJobApplication);
         // insert response with api
 
         // clear data from addJobApplication
@@ -64,12 +53,16 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
                 <Center>
                     <div>Add a new job application:</div>
                 </Center>
-                <AddJobAppsRow
-                    addJobApplication={addJobApplication}
-                    setAddJobApplication={setAddJobApplication}
-                    handleAddFormChange={handleAddFormChange}
-                    handleAddFormSubmit={handleAddFormSubmit}
-                />
+                <form onSubmit={handleAddFormSubmit}>
+                    <AddJobAppsRow
+                        addJobApplication={addJobApplication}
+                        setAddJobApplication={setAddJobApplication}
+                    />
+                    <Button colorScheme='teal' variant='solid' marginLeft={2} type='submit'>
+                        Submit
+                    </Button>
+                </form>
+
             </Box>
 
         </VStack>
