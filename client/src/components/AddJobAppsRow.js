@@ -6,7 +6,6 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
     // Pass in onChange handler and onSubmit
     return (
         <Center>
-            {/* <form onSubmit={(e) => handleAddFormSubmit(e)}> */}
             <InputGroup>
                 <Input
                     type="text"
@@ -80,13 +79,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     value={addJobApplication.notes}
                     onChange={(e) => setAddJobApplication({...addJobApplication, notes: e.target.value})}
                 />
-                {/* Date we should autopopulate with the current date with an insert statement */}
-                {/* <Button colorScheme='teal' variant='solid' marginLeft={2}>
-                    Add
-                </Button> */}
             </InputGroup>
-
-            {/* </form> */}
         </Center>
     )
 };
