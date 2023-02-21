@@ -1,12 +1,28 @@
-const express = require('express');
 const authorization = require('../middleware/authorization');
+const dotenv = require('dotenv');
+dotenv.config();
+const jwt = require('jsonwebtoken');
 
 function postUserLogin (req, res) {
-    const authorizationURL = authorization.getAuthorizationURL();
-    
-    // Store the Google auth URL in the response header.
-    res.location(authorizationURL); // User will redirect to Google auth page
-    res.status(303).end();
-}
+    var userToken = req.body.jwt;
+    var userData = {};
+
+    return authorization.verifyJwt(req)
+        .then(id =>{
+            console.log(id);
+            return authorization.getUserInfo(userToken);
+        })
+        .then(userInfo => {
+            console.log(userInfo);
+            userData = userInfo;
+            return;
+        })
+        .then(() => {
+            return;
+        })
+        .catch(error => {
+            res.status(500).json(error.message);
+        })
+};
 
 module.exports = { postUserLogin };
