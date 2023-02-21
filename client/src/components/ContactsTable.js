@@ -9,8 +9,6 @@ import {
     TableCaption,
     TableContainer,
 } from '@chakra-ui/react'
-
-import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
 import ReadOnlyContactsRow from './ReadOnlyContactsRow';
 
 

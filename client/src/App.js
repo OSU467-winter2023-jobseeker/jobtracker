@@ -18,6 +18,7 @@ import WithSubnavigation from './components/NavigationBar';
 function App() {
   const [backendData, setBackendData] = useState([{}]);
   const [jobApplications, setJobApplications] = useState([]);
+  const [contacts, setContacts] = useState([]);
 
   // Load Job Applications Data
   const loadJobApplications = async () => {
@@ -31,6 +32,7 @@ function App() {
   };
 
   // Load Contacts Applications Data
+  const loadContacts = async () => { };
 
 
   // Load Skills Data
@@ -43,7 +45,12 @@ function App() {
           <Routes>
             <Route path='/' element={<Landing />}></Route>
             <Route path='/UserLogin' element={<UserLogin />}></Route>
-            <Route path='/Contacts' element={<Contacts />}></Route>
+            <Route path='/Contacts'
+              element={<Contacts
+                loadContacts={loadContacts}
+                contacts={contacts}
+                setContacts={setContacts}
+              />}></Route>
             <Route path='/JobApplications'
               element={<JobApplications
                 jobApplications={jobApplications}
