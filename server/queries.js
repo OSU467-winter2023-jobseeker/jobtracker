@@ -40,7 +40,7 @@ const updateApplication = (request, response) => {
 
     pool.query(
         'UPDATE applications SET contact_id = $1, employer = $2, employment_type = $3, application_status = $4, application_deadline = $5, location = $6, url = $7, skills = $8, notes = $9, date_applied = $10 WHERE application_id = $11',
-        [data.contact_id, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied, id],
+        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied, id],
         (error, results) => {
             if (error) {
                 throw error
@@ -54,11 +54,62 @@ const updateApplication = (request, response) => {
 const deleteApplication = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM applications WHERE id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM applications WHERE application_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
         response.status(200).send(`Application deleted with ID: ${id}`)
+    })
+}
+
+const getContacts = (request, response) => {
+    pool.query('SELECT * FROM contacts ORDER BY created_at DESC', (error, results) => {
+        // console.log(request);
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
+const createContacts = (request, response) => {
+    const data = request.body
+
+    pool.query('INSERT INTO contacts (application_id, user_id, full_name, position, email, phone_number, linkedin_url, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', 
+    [data.application_id, data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes], 
+    (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(201).send(`Contact added with ID: ${results.insertId}`)
+    })
+}
+
+const updateContact = (request, response) => {
+    const id = parseInt(request.params.id)
+    const data = request.body
+
+    pool.query(
+        'UPDATE contacts SET application_id = $1, user_id = $2, full_name = $3, position = $4, email = $5, phone_number = $6, linkedin_url = $7, notes = $8 WHERE contact_id = $9',
+        [data.application_id, data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes, id],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).send(`Contact modified with ID: ${id}`)
+        }
+    )
+}
+
+
+const deleteContact = (request, response) => {
+    const id = parseInt(request.params.id)
+
+    pool.query('DELETE FROM contacts WHERE contact_id = $1', [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).send(`Contact deleted with ID: ${id}`)
     })
 }
 
@@ -67,5 +118,9 @@ module.exports = {
     getApplications,
     createApplication,
     updateApplication,
-    deleteApplication
+    deleteApplication,
+    getContacts,
+    createContacts,
+    updateContact,
+    deleteContact
 }
