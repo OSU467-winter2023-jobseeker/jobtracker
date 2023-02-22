@@ -75,8 +75,8 @@ const getContacts = (request, response) => {
 const createContacts = (request, response) => {
     const data = request.body
 
-    pool.query('INSERT INTO contacts (application_id, user_id, full_name, position, email, phone_number, linkedin_url, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', 
-    [data.application_id, data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes], 
+    pool.query('INSERT INTO contacts (user_id, full_name, position, email, phone_number, linkedin_url, notes) VALUES ($1, $2, $3, $4, $5, $6, $7)', 
+    [ data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes], 
     (error, results) => {
         if (error) {
             throw error
@@ -90,8 +90,8 @@ const updateContact = (request, response) => {
     const data = request.body
 
     pool.query(
-        'UPDATE contacts SET application_id = $1, user_id = $2, full_name = $3, position = $4, email = $5, phone_number = $6, linkedin_url = $7, notes = $8 WHERE contact_id = $9',
-        [data.application_id, data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes, id],
+        'UPDATE contacts SET user_id = $1, full_name = $2, position = $3, email = $4, phone_number = $5, linkedin_url = $6, notes = $7 WHERE contact_id = $8',
+        [data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes, id],
         (error, results) => {
             if (error) {
                 throw error

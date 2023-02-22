@@ -4,7 +4,6 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('contacts', [{
-      application_id: 7,
       user_id: 5,
       full_name: "Bob Googler",
       position: 'GCP Manager',
