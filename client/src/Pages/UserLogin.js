@@ -1,8 +1,8 @@
 import { Flex, VStack, Text, Heading } from '@chakra-ui/react';
-import { React, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LargeHeading from '../components/LargeHeading';
 
-function UserLogin() {
+function UserLogin({ user, setUser }) {
 
     function handleCredentialResponse(response) {
         fetch('/userLogin', {
@@ -11,6 +11,12 @@ function UserLogin() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ jwt: response.credential })
+        })
+        .then(userData => {
+            localStorage.setItem('user', JSON.stringify(userData));
+        })
+        .catch(error => {
+            return error;
         });
     };
 

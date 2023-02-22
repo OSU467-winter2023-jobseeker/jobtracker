@@ -1,9 +1,9 @@
-const db = require("./queries")
+const db = require("./queries");
 const userLogin = require('./routes/userLogin.js');
 
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5001;
 
@@ -16,7 +16,7 @@ app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-)
+);
 
 // Used for app deployment 
 // app.get("/*", (req, res) => {
