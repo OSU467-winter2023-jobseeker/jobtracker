@@ -26,7 +26,6 @@ function App() {
     const currentUser = localStorage.getItem('user');
     if (currentUser) {
       setUser(JSON.parse(currentUser));
-        console.log(user);
     }
   }, []);
 
@@ -51,7 +50,10 @@ function App() {
     <ChakraProvider theme={theme}>
       <Router>
         <div>
-          <WithSubnavigation />
+          <WithSubnavigation 
+            user={user}
+            setUser={setUser}
+            />
           <Routes>
             <Route path='/'
               element={<Landing

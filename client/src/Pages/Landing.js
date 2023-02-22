@@ -3,11 +3,12 @@ import React from 'react';
 import LandingRow from '../components/LandingRow';
 import LargeHeading from '../components/LargeHeading';
 
-function Landing() { 
+function Landing({ user }) { 
     return (
         <Box marginTop='20'>
             <LargeHeading text='Track-em-jobs - Start Tracking Now!'></LargeHeading>
             <VStack p='10' spacing='6'>
+                <LargeHeading text={'Hello there ' + user.first_name}></LargeHeading>
                 <LandingRow 
                     buttonText='My Applications' 
                     description='Here you can track all of your job applications in an

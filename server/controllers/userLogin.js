@@ -18,7 +18,6 @@ function postUserLogin (req, res) {
                     { expiresIn: '1h' }
                 )
             };
-
             res.set('Content-Type', 'application/json');
             res.status(200).json(userData);
         })

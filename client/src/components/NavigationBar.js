@@ -21,9 +21,12 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+import LoginButtons from './Buttons/LoginButtons';
   
-  export default function WithSubnavigation() {
+  export default function WithSubnavigation({ user, setUser }) {
     const { isOpen, onToggle } = useDisclosure();
+
+
   
     return (
       <Box>
@@ -62,34 +65,8 @@ import {
               <DesktopNav />
             </Flex>
           </Flex>
-  
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={'flex-end'}
-            direction={'row'}
-            spacing={6}>
-            <Button
-              as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              href={'/UserLogin'}>
-              Sign In
-            </Button>
-            <Button
-              as={'a'}
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'pink.400'}
-              href={'/UserLogin'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
-              Sign Up
-            </Button>
-          </Stack>
+          <LoginButtons user={user}></LoginButtons>
+          
         </Flex>
   
         <Collapse in={isOpen} animateOpacity>

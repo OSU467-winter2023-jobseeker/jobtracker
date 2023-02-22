@@ -4,20 +4,20 @@ import LargeHeading from '../components/LargeHeading';
 
 function UserLogin({ user, setUser }) {
 
-    function handleCredentialResponse(response) {
-        fetch('/userLogin', {
+    const handleCredentialResponse = async (response) => {
+        var res = await fetch('/userLogin', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ jwt: response.credential })
-        })
-        .then(userData => {
-            localStorage.setItem('user', JSON.stringify(userData));
-        })
-        .catch(error => {
-            return error;
         });
+        const userData = await res.json();
+        localStorage.setItem('user', JSON.stringify(userData));
+        
+        // .catch(error => {
+        //     return error;
+        // });
     };
 
     useEffect(() => {
