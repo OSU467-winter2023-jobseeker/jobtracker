@@ -32,6 +32,10 @@ app.get("/applications", db.getApplications)
 app.post("/application", db.createApplication)
 app.put("/application/:id", db.updateApplication)
 app.delete("/application/:id", db.deleteApplication)
+app.get("/contact", db.getContacts)
+app.post("/contact", db.createContacts)
+app.put("/contact/:id", db.updateContact)
+app.delete("/contact/:id", db.deleteContact)
 
 app.listen(PORT, () => (
     console.log(`Server started on port ${PORT}`)
