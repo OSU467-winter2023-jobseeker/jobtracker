@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {
   ChakraProvider,
   // Box,
@@ -19,6 +19,15 @@ function App() {
   const [backendData, setBackendData] = useState([{}]);
   const [jobApplications, setJobApplications] = useState([]);
   const [contacts, setContacts] = useState([]);
+  const [user, setUser] = useState([]);
+
+  // Check user login
+  useEffect(() => {
+    const currentUser = localStorage.getItem('user');
+    if (currentUser) {
+      setUser(JSON.parse(currentUser));
+    }
+  }, []);
 
   // Load Job Applications Data
   const loadJobApplications = async () => {
@@ -41,10 +50,20 @@ function App() {
     <ChakraProvider theme={theme}>
       <Router>
         <div>
-          <WithSubnavigation />
+          <WithSubnavigation 
+            user={user}
+            setUser={setUser}
+            />
           <Routes>
-            <Route path='/' element={<Landing />}></Route>
-            <Route path='/UserLogin' element={<UserLogin />}></Route>
+            <Route path='/'
+              element={<Landing
+                user={user}
+              />}></Route>
+            <Route path='/UserLogin' 
+              element={<UserLogin
+                user={user}
+                setUser={setUser}
+              />}></Route>
             <Route path='/Contacts'
               element={<Contacts
                 loadContacts={loadContacts}

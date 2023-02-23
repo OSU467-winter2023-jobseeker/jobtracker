@@ -41,12 +41,11 @@ function verifyJwt (req) {
 
     return OAUTH2CLIENT.verifyIdToken(verificationParams)
         .then(ticket => {
-            console.log(ticket);
             return ticket.getPayload(); 
         })
-        .then(payload => {
-            return payload['sub'];
-        })
+        // .then(payload => {
+        //      return payload['sub'];
+        // })
         .catch(error => {
             throw new Error('Missing or invalid JWT');
         });
