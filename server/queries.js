@@ -3,11 +3,11 @@ dotenv.config();
 
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'postgres',
-  host: process.env.DB_HOST,
-  database: 'postgres',
-  password: process.env.DB_PASS,
-  port: 5432,
+    user: 'postgres',
+    host: process.env.DB_HOST,
+    database: 'postgres',
+    password: process.env.DB_PASS,
+    port: 5432,
 })
 
 
@@ -24,14 +24,14 @@ const getApplications = (request, response) => {
 const createApplication = (request, response) => {
     const data = request.body
 
-    pool.query('INSERT INTO applications (contact_name, employer, employment_type, application_status, application_deadline, location, url, skills, notes, date_applied) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', 
-    [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied], 
-    (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(201).send(`Application added with ID: ${results.insertId}`)
-    })
+    pool.query('INSERT INTO applications (contact_name, employer, employment_type, application_status, application_deadline, location, url, skills, notes, date_applied) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`Application added with ID: ${results.insertId}`)
+        })
 }
 
 const updateApplication = (request, response) => {
@@ -75,14 +75,14 @@ const getContacts = (request, response) => {
 const createContacts = (request, response) => {
     const data = request.body
 
-    pool.query('INSERT INTO contacts (user_id, full_name, position, email, phone_number, linkedin_url, notes) VALUES ($1, $2, $3, $4, $5, $6, $7)', 
-    [ data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes], 
-    (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(201).send(`Contact added with ID: ${results.insertId}`)
-    })
+    pool.query('INSERT INTO contacts (user_id, full_name, position, email, phone_number, linkedin_url, notes) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+        [data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`Contact added with ID: ${results.insertId}`)
+        })
 }
 
 const updateContact = (request, response) => {
@@ -113,6 +113,55 @@ const deleteContact = (request, response) => {
     })
 }
 
+const getUsers = (request, response) => {
+    pool.query('SELECT * FROM users ORDER BY created_at DESC', (error, results) => {
+        // console.log(request);
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
+const insertUser = (request, response) => {
+    const data = request.body
+
+    pool.query('INSERT INTO users (user_id, full_name, email ) VALUES ($1, $2, $3)',
+        [data.user_id, data.full_name, data.email],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`User added with ID: ${results.insertId}`)
+        })
+}
+
+const updateUser = (request, response) => {
+    const data = request.body
+
+    pool.query('UPDATE users SET full_name = $1, email = $2 WHERE user_id = $3',
+        [data.full_name, data.email, data.user_id],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(201).send(`User modified with ID: ${data.user_id}`)
+        })
+}
+
+
+const deleteUser = (request, response) => {
+    const id = parseInt(request.params.id)
+
+    pool.query('DELETE FROM users WHERE user_id = $1', [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(201).send(`User deleted with ID: ${id}`)
+    })
+
+}
+
 
 module.exports = {
     getApplications,
@@ -122,5 +171,9 @@ module.exports = {
     getContacts,
     createContacts,
     updateContact,
-    deleteContact
+    deleteContact,
+    getUsers,
+    insertUser,
+    updateUser,
+    deleteUser
 }
