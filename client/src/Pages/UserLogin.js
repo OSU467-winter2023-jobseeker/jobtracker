@@ -8,13 +8,13 @@ function UserLogin({ user, setUser }) {
         var res = await fetch('/userLogin', {
             method: 'POST',
             headers: {
+                'Authorization': 'Bearer ' + response.credential,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ jwt: response.credential })
+            // body: JSON.stringify({ jwt: response.credential })
         });
         const userData = await res.json();
         localStorage.setItem('user', JSON.stringify(userData));
-        
         // .catch(error => {
         //     return error;
         // });

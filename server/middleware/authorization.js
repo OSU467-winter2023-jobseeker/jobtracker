@@ -12,11 +12,11 @@ dotenv.config();
 const router = express.Router();
 router.use(bodyParser.json());
 
-const REDIRECT_URL = 'http://localhost:5001/oauth';
+// const REDIRECT_URL = 'http://localhost:5001/oauth';
 const OAUTH2CLIENT = new google.auth.OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
-    REDIRECT_URL
+    // REDIRECT_URL
 );
 
 
@@ -27,33 +27,46 @@ const OAUTH2CLIENT = new google.auth.OAuth2(
  * https://developers.google.com/identity/sign-in/web/backend-auth
  */
 function verifyJwt (req) {
-    var idToken = '';
-    // if (req.body.jwt !== undefined) {
-    //     // remove the bearer suffix
-    //     idToken = req.body.jwt.substr(7);
-    //     console.log(idToken);
-    // }
+    token = '';
 
-    verificationParams = {
-        'idToken': req.body.jwt,
+    if (req.headers.authorization !== undefined) {
+        // remove the bearer suffix
+        token = req.headers.authorization.substr(7);
+    };
+
+    const verificationParams = {
+        'idToken': token,
         'audience': process.env.CLIENT_ID
     };
 
     return OAUTH2CLIENT.verifyIdToken(verificationParams)
         .then(ticket => {
-            return ticket.getPayload(); 
+            return ticket;
         })
-        // .then(payload => {
-        //      return payload['sub'];
-        // })
         .catch(error => {
             throw new Error('Missing or invalid JWT');
         });
 };
+/**
+ * Use the jsonwebtoken API to verify the token passed in
+ * as a header field of the request.
+ */
+async function checkToken (req) {
+    token = '';
 
-function loginAfterVerified(jwt) {
-    jwt.sign(jwt);
-}
+    if (req.headers.authorization !== undefined) {
+        // remove the bearer suffix
+        token = req.headers.authorization.substr(7);
+    };
+
+    return jwt.verify(token, process.env.CLIENT_SECRET), (error, decoded) => {
+        if (error) {
+            throw error;
+        } else {
+            return;
+        }
+    }
+};
 
 /**
  * Use the Google API to create a URL that contains a request
@@ -90,29 +103,10 @@ function getServerToken(req) {
         });
 };
 
-/**
- * Send a GET request to the Google People API to request
- * the names field.
- */
-function getUserInfo(token) {
-    const request = {
-        'method': 'get',
-        'url': 'https://people.googleapis.com/v1/people/me?personFields=names',
-        'headers': { 'Authorization': 'Bearer ' + token.access_token }
-    };
-
-    return axios(request)
-        .then(response => {
-            return response.data.names[0];
-        })
-        .catch(error => {
-            throw error;
-        });
-};
 
 module.exports = {
     getAuthorizationUrl,
     getServerToken,
-    getUserInfo,
-    verifyJwt
+    verifyJwt,
+    checkToken
 };
