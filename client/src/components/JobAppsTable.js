@@ -40,7 +40,7 @@ function JobAppsTable({jobApplications, setJobApplications}) {
                 </Thead>
                 <Tbody>
                 {
-                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} key={i}/>) : <p></p>
+                    jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} key={i}/>) : <Tr></Tr>
                 }
                 {/* {
                     jobApplications.length > 0  ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} onEdit={onEdit} key={i}/>) : <p></p>
