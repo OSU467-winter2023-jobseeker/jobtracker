@@ -1,6 +1,5 @@
 import React from 'react';
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
-import DeleteButton from './Buttons/DeleteButton';
 import {
     Tr,
     Td,
@@ -8,6 +7,18 @@ import {
 
 function ReadOnlyJobAppsRow({data, onDelete}) {
     // Pass in contacts, handler for edit, handler for delete
+    const id = data.application_id;
+
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        // console.log(id);
+		fetch(`application/${id}`, { method: "DELETE" })
+        .then(r => {
+            if(r.status === 200){
+                onDelete(id)
+            }
+        })
+	};
     return (
         <Tr>
             <Td>{data.employer}</Td>
@@ -24,12 +35,10 @@ function ReadOnlyJobAppsRow({data, onDelete}) {
             {/* <Td>
                 <EditIcon onClick={(e) => handleEditClick(e, contact)}/>
             </Td> */}
-
-            <Td><DeleteButton id={data.application_id}/></Td>
            
-            {/* <Td>
-                <DeleteIcon onClick={() => handleDeleteClick(contact.id)}/>
-            </Td> */}
+            <Td>
+                <DeleteIcon onClick={(e) => handleDelete(e, id)}/>
+            </Td>
         </Tr>
     )
 };
