@@ -4,11 +4,9 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('skills', [{
-      application_id: 7,
+      application_id: 1,
       skill: 'Python',
-      comfort_level: 'Intermediate',
-      created_at: new Date(),
-      updated_at: new Date()
+      comfort_level: 'Intermediate'
     }]);
   },
 

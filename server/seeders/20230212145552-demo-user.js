@@ -8,7 +8,6 @@ module.exports = {
       full_name: 'John Doe',
       email: 'example@example.com',
       created_at: new Date(),
-      updated_at: new Date()
     }]);
   },
 

@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('applications', [{
-      user_id: 5,
+      user_id: "testString123",
       employer: "Google",
       employment_type: "Software Engineer",
       application_status: "Applied",
@@ -14,10 +14,9 @@ module.exports = {
       url: "https://careers.google.com/jobs/results/83234373689582278/",
       contact_name: 'Bob Googler',
       created_at: new Date(),
-      updated_at: new Date()
     },
     {
-      user_id: 5,
+      user_id: "testString123",
       employer: "Google2",
       employment_type: "Software Engineer",
       application_status: "Applied",
@@ -27,9 +26,8 @@ module.exports = {
       url: "https://careers.google.com/jobs/results/83234373689582278/",
       contact_name: 'Bob Googler',
       created_at: new Date(),
-      updated_at: new Date()
     },{
-      user_id: 5,
+      user_id: "testString123",
       employer: "Google3",
       employment_type: "Software Engineer",
       application_status: "Applied",
@@ -42,7 +40,7 @@ module.exports = {
       updated_at: new Date()
     },
     {
-      user_id: 5,
+      user_id: "testString123",
       employer: "Google4",
       employment_type: "Software Engineer",
       application_status: "Applied",
@@ -55,7 +53,7 @@ module.exports = {
       updated_at: new Date()
     },
     {
-      user_id: 5,
+      user_id: "testString123",
       employer: "Google5",
       employment_type: "Software Engineer",
       application_status: "Applied",

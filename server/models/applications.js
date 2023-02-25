@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   applications.init({
-    user_id: DataTypes.NUMBER,
+    user_id: DataTypes.STRING,
     contact_name: DataTypes.STRING,
     employer: DataTypes.STRING,
     employment_type: DataTypes.STRING,

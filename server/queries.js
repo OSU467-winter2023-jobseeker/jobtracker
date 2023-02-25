@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
+const { format } = require('date-fns');
 
 const Pool = require('pg').Pool
 const pool = new Pool({
@@ -17,6 +18,10 @@ const getApplications = (request, response) => {
         if (error) {
             throw error
         }
+        results.rows.forEach((row) => {
+            row.application_deadline = format(new Date(row.application_deadline), 'yyyy-MM-dd');
+            row.date_applied = format(new Date(row.date_applied), 'yyyy-MM-dd');
+        })
         response.status(200).json(results.rows)
     })
 }
