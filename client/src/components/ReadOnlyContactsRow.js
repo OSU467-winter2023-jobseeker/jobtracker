@@ -1,6 +1,5 @@
 import React from 'react';
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
-import DeleteButton from './Buttons/DeleteButton';
 import {
     Table,
     Thead,
@@ -29,11 +28,11 @@ function ReadOnlyContactsRow() {
                 <EditIcon onClick={(e) => handleEditClick(e, contact)}/>
             </Td> */}
 
-            <Td><DeleteButton /></Td>
+            
            
-            {/* <Td>
-                <DeleteIcon onClick={() => handleDeleteClick(contact.id)}/>
-            </Td> */}
+            <Td>
+                <DeleteIcon />
+            </Td>
         </Tr>
     )
 };
