@@ -86,9 +86,19 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
                         jobApplications.map((data, i) => (
                             <Fragment>
                                 {editID === data.application_id ? (
-                                    <EditableJobAppsRow editAppFormValues={editAppFormValues} handleCancelClick={handleCancelClick} key={i} />
+                                    <EditableJobAppsRow
+                                        editAppFormValues={editAppFormValues}
+                                        setEditAppFormValues={setEditAppFormValues}
+                                        handleCancelClick={handleCancelClick}
+                                        key={i}
+                                    />
                                 ) : (
-                                    <ReadOnlyJobAppsRow data={data} onDelete={onDelete} onEdit={onEdit} key={i} />
+                                    <ReadOnlyJobAppsRow
+                                        data={data}
+                                        onDelete={onDelete}
+                                        onEdit={onEdit}
+                                        key={i}
+                                    />
                                 )}
                             </Fragment>
                         )
