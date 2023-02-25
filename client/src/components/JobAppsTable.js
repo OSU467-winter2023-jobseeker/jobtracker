@@ -57,71 +57,99 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
         setEditID(null);
     }
 
+    const handleEditSubmitForm = (e) => {
+        e.preventDefault();
+
+        const editedApplication = {
+            id: editID,
+            employer: editAppFormValues.employer,
+            employment_type: editAppFormValues.employment_type,
+            application_status: editAppFormValues.application_status,
+            application_deadline: editAppFormValues.application_deadline,
+            url: editAppFormValues.url,
+            location: editAppFormValues.location,
+            skills: editAppFormValues.skills,
+            contact_name: editAppFormValues.contact_name,
+            notes: editAppFormValues.notes,
+            date_applied: editAppFormValues.date_applied
+        };
+
+        const newApplication = [...jobApplications];
+
+        const index = jobApplications.findIndex((jobApplications) => jobApplications.application_id === editID);
+
+        newApplication[index] = editedApplication;
+        setJobApplications(newApplication);
+        setEditID(null);
+    }
+
     return (
         <TableContainer>
-            <Table variant='striped' colorScheme='teal' size='sm'>
-                <TableCaption>List of jobs/interships you have applied to!</TableCaption>
-                <Thead>
-                    <Tr>
-                        <Th>Company</Th>
-                        <Th>Position</Th>
-                        <Th>Status</Th>
-                        <Th>Application Deadline</Th>
-                        <Th>Job Description</Th>
-                        <Th>Location</Th>
-                        <Th>Skills</Th>
-                        <Th>Contact Info</Th>
-                        <Th>Notes</Th>
-                        <Th>Date Applied</Th>
-                        <Th>Edit</Th>
-                        <Th>Delete</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    {/* {
+            <form onSubmit={(e) => handleEditSubmitForm(e)}>
+                <Table variant='striped' colorScheme='teal' size='sm'>
+                    <TableCaption>List of jobs/interships you have applied to!</TableCaption>
+                    <Thead>
+                        <Tr>
+                            <Th>Company</Th>
+                            <Th>Position</Th>
+                            <Th>Status</Th>
+                            <Th>Application Deadline</Th>
+                            <Th>Job Description</Th>
+                            <Th>Location</Th>
+                            <Th>Skills</Th>
+                            <Th>Contact Info</Th>
+                            <Th>Notes</Th>
+                            <Th>Date Applied</Th>
+                            <Th>Edit</Th>
+                            <Th>Delete</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {/* {
                         jobApplications.length > 0 ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} key={i} />) : <Tr></Tr>
                     } */}
 
-                    {
-                        jobApplications.map((data, i) => (
-                            <Fragment>
-                                {editID === data.application_id ? (
-                                    <EditableJobAppsRow
-                                        editAppFormValues={editAppFormValues}
-                                        setEditAppFormValues={setEditAppFormValues}
-                                        handleCancelClick={handleCancelClick}
-                                        key={i}
-                                    />
-                                ) : (
-                                    <ReadOnlyJobAppsRow
-                                        data={data}
-                                        onDelete={onDelete}
-                                        onEdit={onEdit}
-                                        key={i}
-                                    />
-                                )}
-                            </Fragment>
-                        )
+                        {
+                            jobApplications.map((data, i) => (
+                                <Fragment>
+                                    {editID === data.application_id ? (
+                                        <EditableJobAppsRow
+                                            editAppFormValues={editAppFormValues}
+                                            setEditAppFormValues={setEditAppFormValues}
+                                            handleCancelClick={handleCancelClick}
+                                            key={i}
+                                        />
+                                    ) : (
+                                        <ReadOnlyJobAppsRow
+                                            data={data}
+                                            onDelete={onDelete}
+                                            onEdit={onEdit}
+                                            key={i}
+                                        />
+                                    )}
+                                </Fragment>
+                            )
+                            )}
 
-                        )}
-                </Tbody>
-                <Tfoot>
-                    <Tr>
-                        <Th>Company</Th>
-                        <Th>Position</Th>
-                        <Th>Status</Th>
-                        <Th>Application Deadline</Th>
-                        <Th>Job Description</Th>
-                        <Th>Location</Th>
-                        <Th>Skills</Th>
-                        <Th>Contact Info</Th>
-                        <Th>Notes</Th>
-                        <Th>Date Applied</Th>
-                        <Th>Edit</Th>
-                        <Th>Delete</Th>
-                    </Tr>
-                </Tfoot>
-            </Table>
+                    </Tbody>
+                    <Tfoot>
+                        <Tr>
+                            <Th>Company</Th>
+                            <Th>Position</Th>
+                            <Th>Status</Th>
+                            <Th>Application Deadline</Th>
+                            <Th>Job Description</Th>
+                            <Th>Location</Th>
+                            <Th>Skills</Th>
+                            <Th>Contact Info</Th>
+                            <Th>Notes</Th>
+                            <Th>Date Applied</Th>
+                            <Th>Edit</Th>
+                            <Th>Delete</Th>
+                        </Tr>
+                    </Tfoot>
+                </Table>
+            </form>
         </TableContainer>
     )
 };
