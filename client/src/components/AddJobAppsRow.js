@@ -12,40 +12,40 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="company"
                     required="required"
                     placeholder="Enter a company..."
-                    value={addJobApplication.company}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, company: e.target.value})}
+                    value={addJobApplication.employer}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, employer: e.target.value})}
                 />
                 <Input
                     type="text"
                     name="position"
                     required="required"
                     placeholder="Enter a position..."
-                    value={addJobApplication.position}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, position: e.target.value})}
+                    value={addJobApplication.employment_type}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, employment_type: e.target.value})}
                 />
                 <Input
                     type="text"
                     name="status"
                     required="required"
                     placeholder="Enter a status..."
-                    value={addJobApplication.status}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, status: e.target.value})}
+                    value={addJobApplication.application_status}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, application_status: e.target.value})}
                 />
                 <Input
                     type="date"
-                    name="dateApplied"
+                    name="application_deadline"
                     required="required"
-                    placeholder="Enter the date you applied..."
-                    value={addJobApplication.dateApplied}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, dateApplied: e.target.value})}
+                    placeholder="Enter application deadline..."
+                    value={addJobApplication.application_deadline}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, application_deadline: e.target.value})}
                 />
                 <Input
                     type="text"
                     name="jobDescription"
                     required="required"
                     placeholder="Enter a job link..."
-                    value={addJobApplication.jobDescription}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, jobDescription: e.target.value})}
+                    value={addJobApplication.url}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, url: e.target.value})}
                 />
                 <Input
                     type="text"
@@ -68,8 +68,8 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="contact"
                     required="required"
                     placeholder="Enter a contact..."
-                    value={addJobApplication.contact}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, contact: e.target.value})}
+                    value={addJobApplication.contact_name}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, contact_name: e.target.value})}
                 />
                 <Input
                     type="text"
@@ -78,6 +78,14 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     placeholder="Enter any notes..."
                     value={addJobApplication.notes}
                     onChange={(e) => setAddJobApplication({...addJobApplication, notes: e.target.value})}
+                />
+                <Input
+                    type="date"
+                    name="application_applied"
+                    required="required"
+                    placeholder="Enter applied date..."
+                    value={addJobApplication.date_applied}
+                    onChange={(e) => setAddJobApplication({...addJobApplication, date_applied: e.target.value})}
                 />
             </InputGroup>
         </Center>
