@@ -12,6 +12,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="company"
                     required="required"
                     placeholder="Enter a company..."
+                    size='sm'
                     value={addJobApplication.employer}
                     onChange={(e) => setAddJobApplication({...addJobApplication, employer: e.target.value})}
                 />
@@ -20,6 +21,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="position"
                     required="required"
                     placeholder="Enter a position..."
+                    size='sm'
                     value={addJobApplication.employment_type}
                     onChange={(e) => setAddJobApplication({...addJobApplication, employment_type: e.target.value})}
                 />
@@ -28,6 +30,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="status"
                     required="required"
                     placeholder="Enter a status..."
+                    size='sm'
                     value={addJobApplication.application_status}
                     onChange={(e) => setAddJobApplication({...addJobApplication, application_status: e.target.value})}
                 />
@@ -44,6 +47,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="jobDescription"
                     required="required"
                     placeholder="Enter a job link..."
+                    size='sm'
                     value={addJobApplication.url}
                     onChange={(e) => setAddJobApplication({...addJobApplication, url: e.target.value})}
                 />
@@ -52,6 +56,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="location"
                     required="required"
                     placeholder="Enter location..."
+                    size='sm'
                     value={addJobApplication.location}
                     onChange={(e) => setAddJobApplication({...addJobApplication, location: e.target.value})}
                 />
@@ -60,6 +65,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="skills"
                     required="required"
                     placeholder="Enter skills (separated by commas)"
+                    size='sm'
                     value={addJobApplication.skills}
                     onChange={(e) => setAddJobApplication({...addJobApplication, skills: e.target.value})}
                 />
@@ -68,6 +74,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="contact"
                     required="required"
                     placeholder="Enter a contact..."
+                    size='sm'
                     value={addJobApplication.contact_name}
                     onChange={(e) => setAddJobApplication({...addJobApplication, contact_name: e.target.value})}
                 />
@@ -76,6 +83,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="notes"
                     required="required"
                     placeholder="Enter any notes..."
+                    size='sm'
                     value={addJobApplication.notes}
                     onChange={(e) => setAddJobApplication({...addJobApplication, notes: e.target.value})}
                 />
@@ -84,6 +92,7 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     name="application_applied"
                     required="required"
                     placeholder="Enter applied date..."
+                    size='sm'
                     value={addJobApplication.date_applied}
                     onChange={(e) => setAddJobApplication({...addJobApplication, date_applied: e.target.value})}
                 />

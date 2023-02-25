@@ -67,7 +67,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
                         addJobApplication={addJobApplication}
                         setAddJobApplication={setAddJobApplication}
                     />
-                    <Button colorScheme='teal' variant='solid' marginLeft={2} type='submit'>
+                    <Button colorScheme='teal' variant='solid' marginLeft={2} size='sm' type='submit'>
                         Submit
                     </Button>
                 </form>
