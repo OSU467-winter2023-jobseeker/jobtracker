@@ -97,17 +97,6 @@ function EditableJobAppsRow({ editAppFormValues, setEditAppFormValues, handleCan
             </Td>
             <Td>
                 <Input
-                    type="text"
-                    name="notes"
-                    required="required"
-                    placeholder="Enter any notes..."
-                    size='sm'
-                    value={editAppFormValues.notes}
-                    onChange={(e) => setEditAppFormValues({ ...editAppFormValues, notes: e.target.value })}
-                />
-            </Td>
-            <Td>
-                <Input
                     type="date"
                     name="application_applied"
                     required="required"

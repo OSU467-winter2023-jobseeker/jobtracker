@@ -98,7 +98,6 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
                             <Th>Location</Th>
                             <Th>Skills</Th>
                             <Th>Contact Info</Th>
-                            <Th>Notes</Th>
                             <Th>Date Applied</Th>
                             <Th>Edit</Th>
                             <Th>Delete</Th>
@@ -142,7 +141,6 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
                             <Th>Location</Th>
                             <Th>Skills</Th>
                             <Th>Contact Info</Th>
-                            <Th>Notes</Th>
                             <Th>Date Applied</Th>
                             <Th>Edit</Th>
                             <Th>Delete</Th>
