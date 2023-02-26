@@ -13,6 +13,11 @@ import ReadOnlyContactsRow from './ReadOnlyContactsRow';
 
 
 function ContactsTable({ contacts, setContacts }) {
+    const onDelete = (id) => {
+        const newContacts = contacts.filter((val) => val.contact_id !== id);
+        setContacts(newContacts);
+    }
+
     return (
         <TableContainer>
             <Table variant='striped' colorScheme='teal'>
@@ -29,7 +34,7 @@ function ContactsTable({ contacts, setContacts }) {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {contacts.map((data, i) => <ReadOnlyContactsRow data={data} key={i}/>)}
+                    {contacts.map((data, i) => <ReadOnlyContactsRow data={data} onDelete={onDelete} key={i}/>)}
                 </Tbody>
                 <Tfoot>
                     <Tr>
