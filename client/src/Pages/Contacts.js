@@ -11,17 +11,48 @@ function Contacts({ loadContacts, contacts, setContacts }) {
 
     // Add useState
     const [addContact, setAddContact] = useState({
-        company: "",
-        name: "",
+        full_name: "",
         position: "",
         email: "",
-        phoneNumber: ""
+        phone_number: "",
+        linkedin_url: "",
+        user_id: "testString123"
     });
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
+    const clearAddContact = () => {
+        const clearedContact = {
+            full_name: "",
+            position: "",
+            email: "",
+            phone_number: "",
+            linkedin_url: "",
+            user_id: "testString123"
+        };
 
+        setAddContact(clearedContact);
+    }
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        const newContactsList = [...contacts];
         const newAddContact = { ...addContact };
+        
+        const response = await fetch("/contact", {
+            method: "POST",
+            body: JSON.stringify(newAddContact),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        if (response.status === 201) {
+            alert("Successfully added a new contact!");
+            newContactsList.push(newAddContact);
+            setContacts([...contacts, ...newContactsList]);
+            clearAddContact();
+
+        } else {
+            alert(`Failed to add contact, status code = ${response.status}`)
+        }
         console.log(newAddContact);
         // insert response with api
 

@@ -56,7 +56,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         })
         if (response.status === 201) {
             alert("Successfully added a new application!");
-            newJobApplicationList.push(newJobApplication)
+            newJobApplicationList.push(newJobApplication);
 
             setJobApplications([...jobApplications, ...newJobApplicationList]);
             clearAddJobApplication();
