@@ -1,5 +1,7 @@
 const db = require("./queries");
-const userLogin = require('./routes/userLogin.js');
+const login = require('./routes/login');
+const applications = require('./routes/applications');
+const contacts = require('./routes/contacts');
 
 const express = require('express');
 const cors = require('cors');
@@ -23,15 +25,14 @@ app.use(
 //     res.sendFile(path.join(__dirname, "build", "index.html"));
 //   })
 
-app.use('/userLogin', userLogin);
+app.use('/login', login);
+app.use('/applications', applications);
+app.use('/contacts', contacts);
 
 // app.get('/', (request, response) => {
 //     response.json({ info: 'Job Tracker Page' })
 //   })
-app.get("/applications", db.getApplications)
-app.post("/application", db.createApplication)
-app.put("/application/:id", db.updateApplication)
-app.delete("/application/:id", db.deleteApplication)
+
 app.get("/contact", db.getContacts)
 app.post("/contact", db.createContacts)
 app.put("/contact/:id", db.updateContact)
