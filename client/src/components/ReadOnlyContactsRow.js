@@ -12,24 +12,23 @@ import {
     TableContainer,
 } from '@chakra-ui/react'
 
-function ReadOnlyContactsRow() {
+function ReadOnlyContactsRow({ data }) {
     // Pass in contacts, handler for edit, handler for delete
     return (
         <Tr>
-            <Td>Google</Td>
-            <Td>John Smith</Td>
-            <Td>Software Developer</Td>
-            <Td>example@google.com</Td>
-            <Td>123-456-7890</Td>
-            <Td>01/01/23</Td>
+            <Td>{data.full_name}</Td>
+            <Td>{data.position}</Td>
+            <Td>{data.email}</Td>
+            <Td>{data.phone_number}</Td>
+            <Td>{data.linkedin_url}</Td>
             <Td><EditIcon /></Td>
 
             {/* <Td>
                 <EditIcon onClick={(e) => handleEditClick(e, contact)}/>
             </Td> */}
 
-            
-           
+
+
             <Td>
                 <DeleteIcon />
             </Td>

@@ -41,7 +41,15 @@ function App() {
   };
 
   // Load Contacts Applications Data
-  const loadContacts = async () => { };
+  const loadContacts = async () => {
+    const response = await fetch("/contact");
+    const data = await response.json();
+    if (response.status === 200) {
+      setContacts(data);
+    } else {
+      alert(`Failed to fetch contacts, status code = ${response.status}`);
+    }
+  };
 
 
   // Load Skills Data
@@ -50,16 +58,16 @@ function App() {
     <ChakraProvider theme={theme}>
       <Router>
         <div>
-          <WithSubnavigation 
+          <WithSubnavigation
             user={user}
             setUser={setUser}
-            />
+          />
           <Routes>
             <Route path='/'
               element={<Landing
                 user={user}
               />}></Route>
-            <Route path='/UserLogin' 
+            <Route path='/UserLogin'
               element={<UserLogin
                 user={user}
                 setUser={setUser}
