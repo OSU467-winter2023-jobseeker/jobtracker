@@ -12,36 +12,37 @@ import {
 import ReadOnlyContactsRow from './ReadOnlyContactsRow';
 
 
-function ContactsTable() {
+function ContactsTable({ contacts, setContacts }) {
+    const onDelete = (id) => {
+        const newContacts = contacts.filter((val) => val.contact_id !== id);
+        setContacts(newContacts);
+    }
+
     return (
         <TableContainer>
-            <Table variant='striped' colorScheme='teal'>
+            <Table variant='striped' colorScheme='teal' size='sm'>
                 <TableCaption>List of people you have networked with!</TableCaption>
                 <Thead>
                     <Tr>
-                        <Th>Company</Th>
                         <Th>Contact Name</Th>
                         <Th>Position</Th>
                         <Th>Email</Th>
                         <Th>Phone Number</Th>
-                        <Th>Last Contacted Date</Th>
+                        <Th>Linkedin</Th>
                         <Th>Edit</Th>
                         <Th>Delete</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <ReadOnlyContactsRow />
-                    <ReadOnlyContactsRow />
-                    <ReadOnlyContactsRow />
+                    {contacts.map((data, i) => <ReadOnlyContactsRow data={data} onDelete={onDelete} key={i}/>)}
                 </Tbody>
                 <Tfoot>
                     <Tr>
-                        <Th>Company</Th>
                         <Th>Contact Name</Th>
                         <Th>Position</Th>
                         <Th>Email</Th>
                         <Th>Phone Number</Th>
-                        <Th>Last Contacted Date</Th>
+                        <Th>Linkedin</Th>
                         <Th>Edit</Th>
                         <Th>Delete</Th>
                     </Tr>

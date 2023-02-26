@@ -29,7 +29,6 @@ function ReadOnlyJobAppsRow({data, onDelete, onEdit}) {
             <Td>{data.location}</Td>
             <Td>{data.skills}</Td>
             <Td>{data.contact_name}</Td>
-            <Td>{data.notes}</Td>
             <Td>{data.date_applied}</Td>
 
             <Td>
