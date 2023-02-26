@@ -44,7 +44,9 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
     // Add handlers
     const handleAddFormSubmit = async (e) => {
         e.preventDefault();
-        const newJobApplication = { ...addJobApplication };
+        const newJobApplicationList =  [...jobApplications];
+        const newJobApplication = {...addJobApplication};
+        
         const response = await fetch("/application", {
             method: "POST",
             body: JSON.stringify(newJobApplication),
@@ -54,6 +56,9 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         })
         if (response.status === 201) {
             alert("Successfully added a new application!");
+            newJobApplicationList.push(newJobApplication)
+
+            setJobApplications([...jobApplications, ...newJobApplicationList]);
             clearAddJobApplication();
         } else {
             alert(`Failed to add application, status code = ${response.status}`);
