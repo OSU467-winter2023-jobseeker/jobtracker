@@ -13,6 +13,7 @@ const getApplications = (request, response) => {
             row.application_deadline = format(new Date(row.application_deadline), 'yyyy-MM-dd');
             row.date_applied = format(new Date(row.date_applied), 'yyyy-MM-dd');
         })
+        console.log(results)
         response.status(200).json(results.rows);
     });
 };
