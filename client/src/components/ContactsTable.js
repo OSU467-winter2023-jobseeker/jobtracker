@@ -20,7 +20,7 @@ function ContactsTable({ contacts, setContacts }) {
 
     return (
         <TableContainer>
-            <Table variant='striped' colorScheme='teal'>
+            <Table variant='striped' colorScheme='teal' size='sm'>
                 <TableCaption>List of people you have networked with!</TableCaption>
                 <Thead>
                     <Tr>

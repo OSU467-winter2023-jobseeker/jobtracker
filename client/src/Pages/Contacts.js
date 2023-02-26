@@ -36,7 +36,7 @@ function Contacts({ loadContacts, contacts, setContacts }) {
         e.preventDefault();
         const newContactsList = [...contacts];
         const newAddContact = { ...addContact };
-        
+
         const response = await fetch("/contact", {
             method: "POST",
             body: JSON.stringify(newAddContact),
@@ -78,7 +78,7 @@ function Contacts({ loadContacts, contacts, setContacts }) {
                         addContact={addContact}
                         setAddContact={setAddContact}
                     />
-                    <Button colorScheme='teal' variant='solid' marginLeft={2} type='submit'>
+                    <Button colorScheme='teal' variant='solid' marginLeft={2} size='sm' type='submit'>
                         Add
                     </Button>
                 </form>
