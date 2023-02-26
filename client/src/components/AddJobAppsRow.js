@@ -79,15 +79,6 @@ function AddJobAppsRow({addJobApplication, setAddJobApplication}) {
                     onChange={(e) => setAddJobApplication({...addJobApplication, contact_name: e.target.value})}
                 />
                 <Input
-                    type="text"
-                    name="notes"
-                    required="required"
-                    placeholder="Enter any notes..."
-                    size='sm'
-                    value={addJobApplication.notes}
-                    onChange={(e) => setAddJobApplication({...addJobApplication, notes: e.target.value})}
-                />
-                <Input
                     type="date"
                     name="application_applied"
                     required="required"

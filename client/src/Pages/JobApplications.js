@@ -19,7 +19,6 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         location: "",
         skills: "",
         contact_name: "",
-        notes: "",
         date_applied: "",
         user_id: "testString123"
     });
