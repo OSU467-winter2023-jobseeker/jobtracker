@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const applicationsController = require('../controllers/loginController');
+const applicationsController = require('../controllers/applicationsController');
 
-router.get('/', applicationsController.getApplications)
-router.post('/', applicationsController.createApplications)
-router.put('/:id', applicationsController.updateApplications)
-router.delete('/:id', applicationsController.deleteApplicationss)
+router.get('/', applicationsController.getApplications);
+router.post('/', applicationsController.createApplications);
+router.put('/:id', applicationsController.updateApplications);
+router.delete('/:id', applicationsController.deleteApplications);
 
 module.exports = router;

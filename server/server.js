@@ -29,14 +29,8 @@ app.use('/login', login);
 app.use('/applications', applications);
 app.use('/contacts', contacts);
 
-// app.get('/', (request, response) => {
-//     response.json({ info: 'Job Tracker Page' })
-//   })
 
-app.get("/contact", db.getContacts)
-app.post("/contact", db.createContacts)
-app.put("/contact/:id", db.updateContact)
-app.delete("/contact/:id", db.deleteContact)
+
 app.get("/users", db.getUsers)
 app.post("/user", db.insertUser)
 app.put("/user/:id", db.updateUser)
