@@ -1,5 +1,4 @@
 const authorization = require('../middleware/authorization');
-const queries = require('../queries.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const jwt = require('jsonwebtoken');

@@ -1,4 +1,3 @@
-const db = require("./queries");
 const login = require('./routes/login');
 const applications = require('./routes/applications');
 const contacts = require('./routes/contacts');

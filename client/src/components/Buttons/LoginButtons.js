@@ -14,7 +14,7 @@ function LoginButtons({ user }) {
                     fontSize={'sm'}
                     fontWeight={400}
                     variant={'link'}
-                    href={'/UserLogin'}>
+                    href={'/login'}>
                     Sign In
                 </Button>
                 <Button
@@ -24,7 +24,7 @@ function LoginButtons({ user }) {
                     fontWeight={600}
                     color={'white'}
                     bg={'pink.400'}
-                    href={'/UserLogin'}
+                    href={'/login'}
                     _hover={{
                     bg: 'pink.300',
                     }}>
