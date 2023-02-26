@@ -4,6 +4,7 @@ import AddContactRow from '../components/AddContactRow';
 import React, { useEffect, useState } from 'react';
 
 function Contacts({ loadContacts, contacts, setContacts }) {
+    const user = JSON.parse(localStorage.getItem('user'));
     // Use effect to load the contacts data
     useEffect(() => {
         loadContacts();
@@ -16,7 +17,7 @@ function Contacts({ loadContacts, contacts, setContacts }) {
         email: "",
         phone_number: "",
         linkedin_url: "",
-        user_id: "testString123"
+        user_id: user.user_id
     });
 
     const clearAddContact = () => {
@@ -26,7 +27,7 @@ function Contacts({ loadContacts, contacts, setContacts }) {
             email: "",
             phone_number: "",
             linkedin_url: "",
-            user_id: "testString123"
+            user_id: user.user_id
         };
 
         setAddContact(clearedContact);

@@ -3,7 +3,7 @@ const Pool = require('../db/db');
 const pool = Pool.pool;
 
 const getContacts = (request, response) => {
-    pool.query('SELECT * FROM contacts ORDER BY created_at DESC', (error, results) => {
+    pool.query('SELECT c.* FROM contacts c INNER JOIN users u ON u.user_id = c.user_id WHERE a.user_id = $1 ORDER BY created_at DESC', [request.params.id], (error, results) => {
         // console.log(request);
         if (error) {
             throw error

@@ -12,16 +12,29 @@ const getUsers = (request, response) => {
     });
 };
 
-const insertUsers = (request, response) => {
-    const data = request.body;
+/// create getUser function that takes in userId and returns user object
+const getUser = (userId) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM users WHERE user_id = $1', [userId], (error, results) => {
+            if (error) {
+                reject(error);
+            }   
+            resolve(results.rows[0]);
+        })
+    })
+}
 
+
+const insertUsers = (request, response) => {
+    const data = request;
+    console.log(data)
     pool.query('INSERT INTO users (user_id, full_name, email ) VALUES ($1, $2, $3)',
         [data.user_id, data.full_name, data.email],
         (error, results) => {
             if (error) {
                 throw error
             }
-            response.status(201).send(`User added with ID: ${results.insertId}`);
+            return `User added with ID: ${results.insertId}`;
         }
     );
 };
@@ -56,5 +69,6 @@ module.exports = {
     getUsers,
     insertUsers,
     updateUsers,
-    deleteUsers
+    deleteUsers,
+    getUser
 };

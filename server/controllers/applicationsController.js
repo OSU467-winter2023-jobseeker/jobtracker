@@ -1,13 +1,18 @@
 const authorization = require('../middleware/authorization');
 const Pool = require('../db/db');
 const pool = Pool.pool;
+const { format } = require('date-fns');
 
 const getApplications = (request, response) => {
-    pool.query('SELECT * FROM applications ORDER BY created_at DESC', (error, results) => {
+    pool.query('SELECT a.* FROM applications a INNER JOIN users u ON u.user_id = a.user_id WHERE a.user_id = $1 ORDER BY a.created_at DESC', [request.params.id], (error, results) => {
         // console.log(request);
         if (error) {
             throw error
         }
+        results.rows.forEach((row) => {
+            row.application_deadline = format(new Date(row.application_deadline), 'yyyy-MM-dd');
+            row.date_applied = format(new Date(row.date_applied), 'yyyy-MM-dd');
+        })
         response.status(200).json(results.rows);
     });
 };
