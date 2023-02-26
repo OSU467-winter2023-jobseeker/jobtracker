@@ -18,7 +18,7 @@ function ReadOnlyContactsRow({ data, onDelete }) {
 
     const handleDelete = (e, id) =>  {
         e.preventDefault();
-        fetch(`contact/${id}`, { method: "DELETE" })
+        fetch(`contacts/${id}`, { method: "DELETE" })
         .then(r => {
             if(r.status === 200){
                 onDelete(id)

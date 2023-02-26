@@ -42,7 +42,7 @@ function App() {
 
   // Load Contacts Applications Data
   const loadContacts = async () => {
-    const response = await fetch("/contact");
+    const response = await fetch("/contacts");
     const data = await response.json();
     if (response.status === 200) {
       setContacts(data);
@@ -67,18 +67,18 @@ function App() {
               element={<Landing
                 user={user}
               />}></Route>
-            <Route path='/UserLogin'
+            <Route path='/login'
               element={<UserLogin
                 user={user}
                 setUser={setUser}
               />}></Route>
-            <Route path='/Contacts'
+            <Route path='/contacts'
               element={<Contacts
                 loadContacts={loadContacts}
                 contacts={contacts}
                 setContacts={setContacts}
               />}></Route>
-            <Route path='/JobApplications'
+            <Route path='/applications'
               element={<JobApplications
                 jobApplications={jobApplications}
                 setJobApplications={setJobApplications}

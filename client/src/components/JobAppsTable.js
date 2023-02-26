@@ -72,7 +72,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             date_applied: editAppFormValues.date_applied,
         };
 
-        const response = await fetch(`application/${id}`, {
+        const response = await fetch(`applications/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedApplication),
             headers: {

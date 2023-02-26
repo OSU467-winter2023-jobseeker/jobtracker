@@ -47,7 +47,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         const newJobApplicationList =  [...jobApplications];
         const newJobApplication = {...addJobApplication};
         
-        const response = await fetch("/application", {
+        const response = await fetch("/applications", {
             method: "POST",
             body: JSON.stringify(newJobApplication),
             headers: {

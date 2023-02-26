@@ -5,7 +5,7 @@ import LargeHeading from '../components/LargeHeading';
 function UserLogin({ user, setUser }) {
 
     const handleCredentialResponse = async (response) => {
-        var res = await fetch('/userLogin', {
+        var res = await fetch('/login', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + response.credential,
