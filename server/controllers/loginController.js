@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const Pool = require('../db/db');
 const pool = Pool.pool;
 
-
 /**
  * Verify the authorization header for the request and either
  * create a new account for the user or simply log them in.
@@ -45,4 +44,6 @@ function postUserLogin (req, res) {
         });
 };
 
-module.exports = { postUserLogin };
+module.exports = { 
+    postUserLogin
+};

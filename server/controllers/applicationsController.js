@@ -8,8 +8,8 @@ const getApplications = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
-    })
+        response.status(200).json(results.rows);
+    });
 };
 
 const createApplications = (request, response) => {
@@ -22,8 +22,8 @@ const createApplications = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).send(`Application added with ID: ${results.insertId}`)
-        })
+            response.status(201).send(`Application added with ID: ${results.insertId}`);
+        });
 };
 
 const updateApplications = (request, response) => {
@@ -37,11 +37,10 @@ const updateApplications = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`Application modified with ID: ${id}`)
+            response.status(200).send(`Application modified with ID: ${id}`);
         }
-    )
+    );
 };
-
 
 const deleteApplications = (request, response) => {
     const id = parseInt(request.params.id)
@@ -50,8 +49,8 @@ const deleteApplications = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).send(`Application deleted with ID: ${id}`)
-    })
+        response.status(200).send(`Application deleted with ID: ${id}`);
+    });
 };
 
 module.exports = {
@@ -59,4 +58,4 @@ module.exports = {
     createApplications,
     updateApplications,
     deleteApplications,
-}
+};

@@ -9,11 +9,11 @@ const getUsers = (request, response) => {
             throw error
         }
         response.status(200).json(results.rows)
-    })
-}
+    });
+};
 
 const insertUsers = (request, response) => {
-    const data = request.body
+    const data = request.body;
 
     pool.query('INSERT INTO users (user_id, full_name, email ) VALUES ($1, $2, $3)',
         [data.user_id, data.full_name, data.email],
@@ -21,12 +21,13 @@ const insertUsers = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).send(`User added with ID: ${results.insertId}`)
-        })
-}
+            response.status(201).send(`User added with ID: ${results.insertId}`);
+        }
+    );
+};
 
 const updateUsers = (request, response) => {
-    const data = request.body
+    const data = request.body;
 
     pool.query('UPDATE users SET full_name = $1, email = $2 WHERE user_id = $3',
         [data.full_name, data.email, data.user_id],
@@ -34,20 +35,20 @@ const updateUsers = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).send(`User modified with ID: ${data.user_id}`)
-        })
+            response.status(201).send(`User modified with ID: ${data.user_id}`);
+        }
+    );
 };
 
-
 const deleteUsers = (request, response) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(request.params.id);
 
     pool.query('DELETE FROM users WHERE user_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User deleted with ID: ${id}`)
-    })
+        response.status(201).send(`User deleted with ID: ${id}`);
+    });
 
 };
 

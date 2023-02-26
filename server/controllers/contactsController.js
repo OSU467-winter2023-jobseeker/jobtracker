@@ -8,8 +8,8 @@ const getContacts = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
-    })
+        response.status(200).json(results.rows);
+    });
 };
 
 const createContacts = (request, response) => {
@@ -22,7 +22,7 @@ const createContacts = (request, response) => {
                 throw error
             }
             response.status(201).send(`Contact added with ID: ${results.insertId}`)
-        })
+        });
 };
 
 const updateContacts = (request, response) => {
@@ -37,8 +37,7 @@ const updateContacts = (request, response) => {
                 throw error
             }
             response.status(200).send(`Contact modified with ID: ${id}`)
-        }
-    )
+        });
 };
 
 const deleteContacts = (request, response) => {
@@ -48,8 +47,8 @@ const deleteContacts = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).send(`Contact deleted with ID: ${id}`)
-    })
+        response.status(200).send(`Contact deleted with ID: ${id}`);
+    });
 };
 
 module.exports = {
