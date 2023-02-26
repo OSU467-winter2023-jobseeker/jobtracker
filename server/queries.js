@@ -24,8 +24,9 @@ const getApplications = (request, response) => {
 const createApplication = (request, response) => {
     const data = request.body
 
-    pool.query('INSERT INTO applications (contact_name, employer, employment_type, application_status, application_deadline, location, url, skills, notes, date_applied) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied],
+    pool.query('INSERT INTO applications (contact_name, employer, employment_type, application_status, application_deadline, location, url, skills, date_applied, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.date_applied, data.user_id],
+        // [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied],
         (error, results) => {
             if (error) {
                 throw error

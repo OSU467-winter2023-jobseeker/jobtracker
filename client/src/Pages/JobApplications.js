@@ -20,8 +20,27 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         skills: "",
         contact_name: "",
         notes: "",
-        date_applied:""
+        date_applied: "",
+        user_id: "testString123"
     });
+
+    const clearAddJobApplication = () => {
+        const emptyJobApplication = {
+            employer: "",
+            employment_type: "",
+            application_status: "",
+            application_deadline: "",
+            url: "",
+            location: "",
+            skills: "",
+            contact_name: "",
+            notes: "",
+            date_applied: "",
+            user_id: "testString123"
+        }
+
+        setAddJobApplication(emptyJobApplication);
+    }
 
     // Add handlers
     const handleAddFormSubmit = async (e) => {
@@ -36,15 +55,11 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         })
         if (response.status === 201) {
             alert("Successfully added a new application!");
+            clearAddJobApplication();
         } else {
-            alert(`Failed to add movie, status code = ${response.status}`);
+            alert(`Failed to add application, status code = ${response.status}`);
         }
 
-        
-        console.log(JSON.stringify(newJobApplication));
-        // insert response with api
-
-        // clear data from addJobApplication
     }
 
     return (
