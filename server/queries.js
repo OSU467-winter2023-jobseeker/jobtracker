@@ -40,8 +40,8 @@ const updateApplication = (request, response) => {
     const data = request.body
 
     pool.query(
-        'UPDATE applications SET contact_name = $1, employer = $2, employment_type = $3, application_status = $4, application_deadline = $5, location = $6, url = $7, skills = $8, notes = $9, date_applied = $10 WHERE application_id = $11',
-        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.notes, data.date_applied, id],
+        'UPDATE applications SET contact_name = $1, employer = $2, employment_type = $3, application_status = $4, application_deadline = $5, location = $6, url = $7, skills = $8, date_applied = $9 WHERE application_id = $10',
+        [data.contact_name, data.employer, data.employment_type, data.application_status, data.application_deadline, data.location, data.url, data.skills, data.date_applied, id],
         (error, results) => {
             if (error) {
                 throw error

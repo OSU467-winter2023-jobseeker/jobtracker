@@ -25,8 +25,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
         location: "",
         skills: "",
         contact_name: "",
-        notes: "",
-        date_applied: ""
+        date_applied: "",
     })
 
     const onEdit = (e, application) => {
@@ -42,7 +41,6 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             location: application.location,
             skills: application.skills,
             contact_name: application.contact_name,
-            notes: application.notes,
             date_applied: application.date_applied
         }
         setEditAppFormValues(formValues);
@@ -57,8 +55,9 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
         setEditID(null);
     }
 
-    const handleEditSubmitForm = (e) => {
+    const handleEditSubmitForm = async (e) => {
         e.preventDefault();
+        const id = editID;
 
         const editedApplication = {
             id: editID,
@@ -70,9 +69,21 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             location: editAppFormValues.location,
             skills: editAppFormValues.skills,
             contact_name: editAppFormValues.contact_name,
-            notes: editAppFormValues.notes,
-            date_applied: editAppFormValues.date_applied
+            date_applied: editAppFormValues.date_applied,
         };
+
+        const response = await fetch(`application/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(editedApplication),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        if (response.status === 200) {
+            alert('Application has been updated!')
+        } else {
+            alert('Application failed to be updated!')
+        }
 
         const newApplication = [...jobApplications];
 
