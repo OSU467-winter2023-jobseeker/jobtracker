@@ -24,7 +24,7 @@ function App() {
   // Check user login
   useEffect(() => {
     const currentUser = localStorage.getItem('user');
-      if (currentUser) {
+    if (currentUser) {
       setUser(JSON.parse(currentUser));
     }
   }, []);
@@ -36,7 +36,7 @@ function App() {
     const response = await fetch(`/applications/${user.user_id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-    }       );
+    });
     const data = await response.json();
     if (response.status === 200) {
       setJobApplications(data);
@@ -47,7 +47,10 @@ function App() {
 
   // Load Contacts Applications Data
   const loadContacts = async () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'), {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
     const response = await fetch(`/contacts/${user.user_id}`);
     const data = await response.json();
     if (response.status === 200) {
@@ -56,10 +59,10 @@ function App() {
       alert(`Failed to fetch contacts, status code = ${response.status}`);
     }
   };
-  
+
 
   // Load Skills Data
-const userData = JSON.parse(localStorage.getItem('user'));
+  const userData = JSON.parse(localStorage.getItem('user'));
   return (
     <ChakraProvider theme={theme}>
       <Router>

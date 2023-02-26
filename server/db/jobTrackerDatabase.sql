@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS "contacts" (
   "updated_at" timestamp NOT NULL DEFAULT now()
 );
 
-ALTER TABLE "skills" ADD FOREIGN KEY ("application_id") REFERENCES "applications" ("application_id") ON DELETE NO ACTION;
+ALTER TABLE "skills" ADD FOREIGN KEY ("application_id") REFERENCES "applications" ("application_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE "applications" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
 
-ALTER TABLE "contacts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
+ALTER TABLE "contacts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 CREATE OR REPLACE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
