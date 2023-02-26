@@ -2,6 +2,7 @@ const db = require("./queries");
 const login = require('./routes/login');
 const applications = require('./routes/applications');
 const contacts = require('./routes/contacts');
+const users = require('./routes/users');
 
 const express = require('express');
 const cors = require('cors');
@@ -28,13 +29,7 @@ app.use(
 app.use('/login', login);
 app.use('/applications', applications);
 app.use('/contacts', contacts);
-
-
-
-app.get("/users", db.getUsers)
-app.post("/user", db.insertUser)
-app.put("/user/:id", db.updateUser)
-app.delete("/user/:id", db.deleteUser)
+app.use('/users', users);
 
 app.listen(PORT, () => (
     console.log(`Server started on port ${PORT}`)

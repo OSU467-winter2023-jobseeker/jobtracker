@@ -1,5 +1,6 @@
 const authorization = require('../middleware/authorization');
-const pool = require('../db/db');
+const Pool = require('../db/db');
+const pool = Pool.pool;
 
 const getApplications = (request, response) => {
     pool.query('SELECT * FROM applications ORDER BY created_at DESC', (error, results) => {

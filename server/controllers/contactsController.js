@@ -1,4 +1,6 @@
 const authorization = require('../middleware/authorization');
+const Pool = require('../db/db');
+const pool = Pool.pool;
 
 const getContacts = (request, response) => {
     pool.query('SELECT * FROM contacts ORDER BY created_at DESC', (error, results) => {
@@ -49,7 +51,6 @@ const deleteContacts = (request, response) => {
         response.status(200).send(`Contact deleted with ID: ${id}`)
     })
 };
-
 
 module.exports = {
     getContacts,

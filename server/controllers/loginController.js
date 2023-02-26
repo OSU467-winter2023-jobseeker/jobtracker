@@ -3,6 +3,8 @@ const queries = require('../queries.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const jwt = require('jsonwebtoken');
+const Pool = require('../db/db');
+const pool = Pool.pool;
 
 
 /**
