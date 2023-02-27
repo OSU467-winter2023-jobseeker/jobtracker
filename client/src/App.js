@@ -10,7 +10,7 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Contacts, Landing, UserLogin, JobApplications } from './pages';
+import { Contacts, Landing, UserLogin, JobApplications, Skills } from './pages';
 import WithSubnavigation from './components/NavigationBar';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 // import { Logo } from './Logo';
@@ -92,6 +92,10 @@ function App() {
                 jobApplications={jobApplications}
                 setJobApplications={setJobApplications}
                 loadJobApplications={loadJobApplications}
+              />}>
+            </Route>
+            <Route path='/skills'
+              element={<Skills
               />}>
             </Route>
           </Routes>
