@@ -1,15 +1,15 @@
 import React from 'react';
-import { Container } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import SkillsRow from './SkillsRow';
 
 function SkillsTable({ skills }) {
 
     return (
-        <Container>
+        <VStack padding='5' align='center' justifyContent='center'>
             {skills.map((skill) =>
                 <SkillsRow skill={skill} key={skill.skill.toString()} />
             )}
-        </Container>
+        </VStack>
     )
 };
 
