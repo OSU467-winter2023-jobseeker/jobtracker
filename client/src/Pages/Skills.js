@@ -4,7 +4,6 @@ import LargeHeading from '../components/LargeHeading';
 import SkillsTable from '../components/SkillsCard';
 
 function Skills ({}) {
-    const user = JSON.parse(localStorage.getItem('user'));
     const [skillsData, setSkillsData] = useState([]);
 
     const fakeData = [
@@ -31,19 +30,17 @@ function Skills ({}) {
     ];
 
     const loadSkills = async (response) => {
-        // var res = await fetch('/skills', {
-        //     method: 'GET',
-        //     headers: {
-        //         'Authorization': 'Bearer ' + user.token,
-        //         "Content-Type": "application/json"
-        //     },
-        // });
-        // const skills = await res.json();
-        const data = fakeData;
-        console.log(fakeData);
-        setSkillsData(data);
-        console.log(skillsData);
-
+        const user = JSON.parse(localStorage.getItem('user'));
+        var res = await fetch('/skills', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + user.token,
+                "Content-Type": "application/json"
+            },
+        });
+        const skills = await res.json();
+        console.log(skills);
+        setSkillsData(skills);
     };
 
     useEffect(() => {
