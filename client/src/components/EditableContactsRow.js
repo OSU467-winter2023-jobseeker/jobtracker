@@ -3,7 +3,7 @@ import { Button, Center, Input, InputGroup, Tr, Td, } from '@chakra-ui/react';
 
 
 
-function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCancelClick }) {
+function EditableContactsRow({ editContactFormValues, setContactAppFormValues, handleCancelClick }) {
     // Pass in onChange handler and onSubmit
     return (
         <Tr>
@@ -13,8 +13,9 @@ function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCa
                     name="name"
                     required="required"
                     placeholder="Enter a name..."
-                    value={addContact.full_name}
-                    onChange={(e) => setAddContact({ ...addContact, full_name: e.target.value })}
+                    size='sm'
+                    value={editContactFormValues.full_name}
+                    onChange={(e) => setContactAppFormValues({ ...editContactFormValues, full_name: e.target.value })}
                 />
             </Td>
             <Td>
@@ -23,8 +24,9 @@ function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCa
                     name="position"
                     required="required"
                     placeholder="Enter a position..."
-                    value={addContact.position}
-                    onChange={(e) => setAddContact({ ...addContact, position: e.target.value })}
+                    size='sm'
+                    value={editContactFormValues.position}
+                    onChange={(e) => setContactAppFormValues({ ...editContactFormValues, position: e.target.value })}
                 />
             </Td>
             <Td>
@@ -33,8 +35,9 @@ function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCa
                     name="email"
                     required="required"
                     placeholder="Enter an email..."
-                    value={addContact.email}
-                    onChange={(e) => setAddContact({ ...addContact, email: e.target.value })}
+                    size='sm'
+                    value={editContactFormValues.email}
+                    onChange={(e) => setContactAppFormValues({ ...editContactFormValues, email: e.target.value })}
                 />
             </Td>
             <Td>
@@ -43,8 +46,9 @@ function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCa
                     name="phoneNumber"
                     required="required"
                     placeholder="Enter a phone number..."
-                    value={addContact.phone_number}
-                    onChange={(e) => setAddContact({ ...addContact, phone_number: e.target.value })}
+                    size='sm'
+                    value={editContactFormValues.phone_number}
+                    onChange={(e) => setContactAppFormValues({ ...editContactFormValues, phone_number: e.target.value })}
                 />
             </Td>
             <Td>
@@ -53,8 +57,9 @@ function EditableContactsRow({ editAppFormValues, setEditAppFormValues, handleCa
                     name="company"
                     required="required"
                     placeholder="Enter a Linkedin link..."
-                    value={addContact.linkedin_url}
-                    onChange={(e) => setAddContact({ ...addContact, linkedin_url: e.target.value })}
+                    size='sm'
+                    value={editContactFormValues.linkedin_url}
+                    onChange={(e) => setContactAppFormValues({ ...editContactFormValues, linkedin_url: e.target.value })}
                 />
             </Td>
             <Td>

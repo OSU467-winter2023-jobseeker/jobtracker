@@ -30,8 +30,8 @@ const updateContacts = (request, response) => {
     const data = request.body
 
     pool.query(
-        'UPDATE contacts SET user_id = $1, full_name = $2, position = $3, email = $4, phone_number = $5, linkedin_url = $6, notes = $7 WHERE contact_id = $8',
-        [data.user_id, data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes, id],
+        'UPDATE contacts SET full_name = $1, position = $2, email = $3, phone_number = $4, linkedin_url = $5, notes = $6 WHERE contact_id = $7',
+        [data.full_name, data.position, data.email, data.phone_number, data.linkedin_url, data.notes, id],
         (error, results) => {
             if (error) {
                 throw error
