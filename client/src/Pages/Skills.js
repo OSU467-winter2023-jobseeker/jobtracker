@@ -6,29 +6,6 @@ import SkillsCard from '../components/SkillsCard';
 function Skills ({}) {
     const [skillsData, setSkillsData] = useState([]);
 
-    const fakeData = [
-        {
-            skill: 'React',
-            skillPercent: 24,
-            applications: ['xxx', 'yyy', 'zzz']
-        },
-        {
-            skill: 'Git',
-            skillPercent: 98,
-            applications: ['xxx', 'yyy', 'zzz']
-        },
-        {
-            skill: 'Ruby',
-            skillPercent: 78,
-            applications: ['xxx', 'yyy', 'zzz']
-        },
-        {
-            skill: 'Python',
-            skillPercent: 46,
-            applications: ['xxx', 'yyy', 'zzz']
-        }
-    ];
-
     const loadSkills = async (response) => {
         const user = JSON.parse(localStorage.getItem('user'));
         var res = await fetch('/skills', {
@@ -39,9 +16,7 @@ function Skills ({}) {
             },
         });
         const skills = await res.json();
-        console.log(skills);
         setSkillsData(skills);
-        // setSkillsData(fakeData);
     };
 
     useEffect(() => {
