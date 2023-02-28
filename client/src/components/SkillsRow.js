@@ -1,22 +1,28 @@
 import React from 'react';
-import { Container, } from '@chakra-ui/react';
+import { Container, Text, Heading, Card, CardBody, CardHeader, Divider } from '@chakra-ui/react';
 
-function SkillsRow({ skill, percent, mentionedSkills }) {
+function SkillsRow({ skill }) {
+    console.log('Skill:');
+    console.log(skill);
 
     return (
-        <Container>
-            <Heading 
-                as='h2' 
-                size='4xl' 
-                align='center'>
-                {skill}
-            </Heading>
-            <Text>Appears in {percent} of your applications.</Text>
-            <Text>Your applications that mention this skill:</Text>
-            {mentionedSkills.map((data, i) =>  {
-                <Text data={data} key={i}/>
-            })}
-        </Container>
+        <Card variant='outline'>
+            <Divider></Divider>
+            <CardHeader>
+                <Heading
+                    fontSize='4xl'
+                    align='left'>
+                    {skill.skill}
+                </Heading>
+            </CardHeader>
+            <CardBody>
+                <Text>Appears in <b>{skill.skillPercent}%</b> of your applications.</Text>
+                <Text>Your applications that mention this skill:</Text>
+                {skill.applications.map((application, i) => 
+                    <Text>{application}</Text>
+                )}
+            </CardBody>
+        </Card>
     )
 };
 
