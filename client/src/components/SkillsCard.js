@@ -2,15 +2,14 @@ import React from 'react';
 import { VStack } from '@chakra-ui/react';
 import SkillsRow from './SkillsRow';
 
-function SkillsTable({ skills }) {
-
+function SkillsCard({ skills }) {
     return (
         <VStack padding='5' align='center' justifyContent='center'>
-            {skills.map((skill) =>
-                <SkillsRow skill={skill} key={skill.skill.toString()} />
+            {Object.values(skills).map((skill) => 
+                <SkillsRow skill={skill} />
             )}
         </VStack>
     )
 };
 
-export default SkillsTable;
+export default SkillsCard;

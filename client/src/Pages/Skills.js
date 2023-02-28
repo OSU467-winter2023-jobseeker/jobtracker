@@ -1,7 +1,7 @@
 import { VStack, Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import LargeHeading from '../components/LargeHeading';
-import SkillsTable from '../components/SkillsCard';
+import SkillsCard from '../components/SkillsCard';
 
 function Skills ({}) {
     const [skillsData, setSkillsData] = useState([]);
@@ -51,7 +51,7 @@ function Skills ({}) {
     return (
         <Box padding='10'>
             <LargeHeading text='Skills in my Applications'></LargeHeading>
-            <SkillsTable skills={skillsData}/>
+            <SkillsCard skills={skillsData}/>
         </Box>
     )
 };
