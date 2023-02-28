@@ -72,7 +72,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             date_applied: editAppFormValues.date_applied,
         };
 
-        const response = await fetch(`application/${id}`, {
+        const response = await fetch(`applications/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedApplication),
             headers: {
@@ -115,31 +115,27 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {/* {
-                        jobApplications.length > 0 ? jobApplications.map((data, i) => <ReadOnlyJobAppsRow data={data} onDelete={onDelete} key={i} />) : <Tr></Tr>
-                    } */}
 
-                        {
-                            jobApplications.map((data, i) => (
-                                <Fragment>
-                                    {editID === data.application_id ? (
-                                        <EditableJobAppsRow
-                                            editAppFormValues={editAppFormValues}
-                                            setEditAppFormValues={setEditAppFormValues}
-                                            handleCancelClick={handleCancelClick}
-                                            key={i}
-                                        />
-                                    ) : (
-                                        <ReadOnlyJobAppsRow
-                                            data={data}
-                                            onDelete={onDelete}
-                                            onEdit={onEdit}
-                                            key={i}
-                                        />
-                                    )}
-                                </Fragment>
-                            )
-                            )}
+                        {jobApplications.map((data, i) => (
+                            <Fragment>
+                                {editID === data.application_id ? (
+                                    <EditableJobAppsRow
+                                        editAppFormValues={editAppFormValues}
+                                        setEditAppFormValues={setEditAppFormValues}
+                                        handleCancelClick={handleCancelClick}
+                                        key={i}
+                                    />
+                                ) : (
+                                    <ReadOnlyJobAppsRow
+                                        data={data}
+                                        onDelete={onDelete}
+                                        onEdit={onEdit}
+                                        key={i}
+                                    />
+                                )}
+                            </Fragment>
+                        )
+                        )}
 
                     </Tbody>
                     <Tfoot>

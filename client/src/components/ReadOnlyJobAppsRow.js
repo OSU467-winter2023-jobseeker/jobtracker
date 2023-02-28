@@ -12,7 +12,7 @@ function ReadOnlyJobAppsRow({data, onDelete, onEdit}) {
     const handleDelete = (e, id) => {
         e.preventDefault();
         // console.log(id);
-		fetch(`application/${id}`, { method: "DELETE" })
+		fetch(`applications/${id}`, { method: "DELETE" })
         .then(r => {
             if(r.status === 200){
                 onDelete(id)

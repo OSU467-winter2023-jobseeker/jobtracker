@@ -234,7 +234,7 @@ import LoginButtons from './Buttons/LoginButtons';
         {
           label: 'Job Applications List',
           subLabel: 'View a table list of your job applications',
-          href: '/JobApplications',
+          href: '/applications',
         },
         {
           label: 'Add New Job Application',
@@ -249,7 +249,7 @@ import LoginButtons from './Buttons/LoginButtons';
         {
           label: 'Job Contacts',
           subLabel: 'View a table list of your job contacts',
-          href: '/Contacts',
+          href: '/contacts',
         },
         {
           label: 'Add New Job Contact',

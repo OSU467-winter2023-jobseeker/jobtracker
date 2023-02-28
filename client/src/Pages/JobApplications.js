@@ -4,6 +4,7 @@ import AddJobAppsRow from '../components/AddJobAppsRow';
 import { useEffect, useState } from 'react';
 
 function JobApplications({ jobApplications, setJobApplications, loadJobApplications }) {
+    const user = JSON.parse(localStorage.getItem('user'));
     // Use effect to load the job applications data
     useEffect(() => {
         loadJobApplications();
@@ -20,7 +21,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         skills: "",
         contact_name: "",
         date_applied: "",
-        user_id: "testString123"
+        user_id: user.user_id
     });
 
     const clearAddJobApplication = () => {
@@ -35,7 +36,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
             contact_name: "",
             notes: "",
             date_applied: "",
-            user_id: "testString123"
+            user_id: user.user_id
         }
 
         setAddJobApplication(emptyJobApplication);
@@ -47,7 +48,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         const newJobApplicationList =  [...jobApplications];
         const newJobApplication = {...addJobApplication};
         
-        const response = await fetch("/application", {
+        const response = await fetch("/applications", {
             method: "POST",
             body: JSON.stringify(newJobApplication),
             headers: {

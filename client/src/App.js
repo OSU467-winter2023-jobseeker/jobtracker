@@ -31,7 +31,12 @@ function App() {
 
   // Load Job Applications Data
   const loadJobApplications = async () => {
-    const response = await fetch("/applications");
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    const response = await fetch(`/applications/${user.user_id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
     const data = await response.json();
     if (response.status === 200) {
       setJobApplications(data);
@@ -42,7 +47,11 @@ function App() {
 
   // Load Contacts Applications Data
   const loadContacts = async () => {
-    const response = await fetch("/contact");
+    const user = JSON.parse(localStorage.getItem('user'), {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const response = await fetch(`/contacts/${user.user_id}`);
     const data = await response.json();
     if (response.status === 200) {
       setContacts(data);
@@ -53,7 +62,7 @@ function App() {
 
 
   // Load Skills Data
-
+  const userData = JSON.parse(localStorage.getItem('user'));
   return (
     <ChakraProvider theme={theme}>
       <Router>
@@ -67,18 +76,18 @@ function App() {
               element={<Landing
                 user={user}
               />}></Route>
-            <Route path='/UserLogin'
+            <Route path='/login'
               element={<UserLogin
                 user={user}
                 setUser={setUser}
               />}></Route>
-            <Route path='/Contacts'
+            <Route path='/contacts'
               element={<Contacts
                 loadContacts={loadContacts}
                 contacts={contacts}
                 setContacts={setContacts}
               />}></Route>
-            <Route path='/JobApplications'
+            <Route path='/applications'
               element={<JobApplications
                 jobApplications={jobApplications}
                 setJobApplications={setJobApplications}

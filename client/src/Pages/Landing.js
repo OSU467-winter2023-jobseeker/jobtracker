@@ -13,21 +13,21 @@ function Landing({ user }) {
                     buttonText='My Applications' 
                     description='Here you can track all of your job applications in an
                         easy-to-read spreadsheet style page.'
-                    link='/JobApplications'>
+                    link='/applications'>
                 </LandingRow>
                 <LandingRow 
                     buttonText='My Contacts' 
                     description='Up your networking game with this helpful tool to 
                     track your networking contacts and their relationships to
                     your applications.'
-                    link='/Contacts'>
+                    link='/contacts'>
                 </LandingRow>
                 <LandingRow 
                     buttonText='Job Skills'
                     description='See how often skills are mentioned in each of your 
                     current applications and view jobs based on the skills 
                     they require.'
-                    link='/UserLogin'>
+                    link='/login'>
                 </LandingRow>
             </VStack>
         </Box>
