@@ -1,13 +1,12 @@
 import React from 'react';
-import { Container, Text, Heading, Card, CardBody, CardHeader, Divider } from '@chakra-ui/react';
+import { Box, Text, Heading, Card, CardBody, CardHeader, Divider } from '@chakra-ui/react';
 
 function SkillsRow({ skill }) {
     console.log('Skill:');
     console.log(skill);
 
     return (
-        <Card variant='outline'>
-            <Divider></Divider>
+        <Card align='left' variant='outline' size='md' backgroundColor='aliceblue' borderWidth='thick' w='50%'>
             <CardHeader>
                 <Heading
                     fontSize='4xl'
@@ -16,11 +15,13 @@ function SkillsRow({ skill }) {
                 </Heading>
             </CardHeader>
             <CardBody>
-                <Text>Appears in <b>{skill.skillPercent}%</b> of your applications.</Text>
-                <Text>Your applications that mention this skill:</Text>
-                {skill.applications.map((application, i) => 
-                    <Text>{application}</Text>
-                )}
+                <Text fontSize='lg'>Appears in <b>{skill.skillPercent}%</b> of your applications.</Text>
+                <Text fontSize='lg'>Your applications that mention this skill:</Text>
+                <Box paddingLeft='5'>
+                    {skill.applications.map((application) => 
+                        <Text fontSize='lg'>{application}</Text>
+                    )}
+                </Box>
             </CardBody>
         </Card>
     )
