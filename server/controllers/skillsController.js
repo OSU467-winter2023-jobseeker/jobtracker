@@ -13,21 +13,30 @@ async function getSkills (request, response) {
                 throw error
             }
             const skillsResults = analyzeSkills(results.rows);
-            console.log(skillsResults);
             response.status(200).json(skillsResults);
     });
 
 };
 
+/**
+ * Take the row results from a sql skills query and return a new
+ * object containing analysis of each skill and how many times
+ * it appears across a user's applications.
+ */
 function analyzeSkills (skillsQuery) {
-    var skillsResults = {}
+    var skillsResults = {};
     var apps = [];
     
+    // 
     for (const skillPair in skillsQuery) {
         const currentSkill = skillsQuery[skillPair].skill;
         const currentEmployer = skillsQuery[skillPair].employer;
         if (!(currentSkill in skillsResults)) {
-            skillsResults[currentSkill] = {skillPercent: 1, applications: [currentEmployer]};
+            skillsResults[currentSkill] = {
+                skill: currentSkill,
+                skillPercent: 1, 
+                applications: [currentEmployer
+            ]};
         } else {
             skillsResults[currentSkill].skillPercent += 1;
             skillsResults[currentSkill].applications.push(currentEmployer);
@@ -44,7 +53,7 @@ function analyzeSkills (skillsQuery) {
     }
 
     return skillsResults;
-}
+};
 
 const getSkill = (request, response) => {
     pool.query('SELECT s.* FROM skills s INNER JOIN applications a ON a.application_id = s.application_id WHERE s.application_id = $1 ORDER BY s.created_at DESC', 

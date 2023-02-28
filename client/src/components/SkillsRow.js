@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Heading, Card, CardBody, CardHeader, Divider } from '@chakra-ui/react';
+import { Box, Text, Heading, Card, CardBody, CardHeader } from '@chakra-ui/react';
 
 function SkillsRow({ skill }) {
     console.log('Skill:');
