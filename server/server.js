@@ -28,7 +28,7 @@ app.use(
 app.use('/login', login);
 app.use('/applications', applications);
 app.use('/contacts', contacts);
-app.use('/users', users);
+app.use('/users', users); 
 
 app.listen(PORT, () => (
     console.log(`Server started on port ${PORT}`)
