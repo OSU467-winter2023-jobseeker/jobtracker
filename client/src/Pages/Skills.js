@@ -30,17 +30,18 @@ function Skills ({}) {
     ];
 
     const loadSkills = async (response) => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        var res = await fetch('/skills', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + user.token,
-                "Content-Type": "application/json"
-            },
-        });
-        const skills = await res.json();
-        console.log(skills);
-        setSkillsData(skills);
+        // const user = JSON.parse(localStorage.getItem('user'));
+        // var res = await fetch('/skills', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Authorization': 'Bearer ' + user.token,
+        //         "Content-Type": "application/json"
+        //     },
+        // });
+        // const skills = await res.json();
+        // console.log(skills);
+        // setSkillsData(skills);
+        setSkillsData(fakeData);
     };
 
     useEffect(() => {
