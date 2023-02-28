@@ -7,7 +7,7 @@ function Landing({ user }) {
     return (
         <Box marginTop='20' align='center'>
             <LargeHeading text='Track-em-jobs - Start Tracking Now!'></LargeHeading>
-            <VStack p='10' spacing='6' align='stretch' w='50%'>
+            <VStack p='10' spacing='6' align='stretch' w='75%'>
                 <LargeHeading text={'Hello there ' + user.first_name}></LargeHeading>
                 <LandingRow 
                     buttonText='My Applications'

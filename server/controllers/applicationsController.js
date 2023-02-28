@@ -53,6 +53,8 @@ const updateApplications = (request, response) => {
 const deleteApplications = (request, response) => {
     const id = parseInt(request.params.id)
 
+    const deleteSkillsResult = skills.deleteSkills(id);
+
     pool.query('DELETE FROM applications WHERE application_id = $1', [id], (error, results) => {
         if (error) {
             throw error

@@ -55,18 +55,6 @@ function analyzeSkills (skillsQuery) {
     return skillsResults;
 };
 
-const getSkill = (request, response) => {
-    pool.query('SELECT s.* FROM skills s INNER JOIN applications a ON a.application_id = s.application_id WHERE s.application_id = $1 ORDER BY s.created_at DESC', 
-        [request.params.id], 
-        (error, results) => {
-            if (error) {
-                throw error;
-            }
-            response.status(200).json(results.rows);
-        }
-    );
-};
-
 /**
  * Take the string of skills inserted into applications and 
  * create a new Skill object for each.
@@ -93,21 +81,35 @@ async function createSkill (applicationId, skill) {
     );
 };
 
-const deleteSkill = (request, response) => {
-    const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM skills WHERE skills_id = $1', 
-        [id], 
+/**
+ * Take the string of skills inserted into applications and 
+ * create a new Skill object for each.
+ */
+async function deleteSkills (applicationId, skills) {
+    const skillList = skills.split(', ');
+    for (const skill in skillList) {
+        const newSkill = await deleteSkill(applicationId, skillList[skill]);
+    }
+}
+
+/**
+ * Create all skills with the given.
+ */
+async function deleteSkills (applicationId) {
+    pool.query('DELETE FROM skills WHERE application_id = $1', 
+        [applicationId], 
         (error, results) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`Skill deleted with ID: ${id}`);
+            return results;
         }
     );
 };
 
 module.exports = {
     getSkills,
-    createSkills
+    createSkills,
+    deleteSkills
 };
