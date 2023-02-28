@@ -2,6 +2,20 @@ const authorization = require('../middleware/authorization');
 const Pool = require('../db/db');
 const pool = Pool.pool;
 
+async function getSkills (request, response) {
+    const userId = await authorization.checkToken(request, true);
+
+    pool.query('SELECT s.* FROM skills s INNER JOIN applications a ON a.application_id = s.application_id WHERE s.application_id = $1 ORDER BY s.created_at DESC', 
+        [request.params.id], 
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).json(results.rows);
+        }
+    );
+};
+
 const getSkill = (request, response) => {
     pool.query('SELECT s.* FROM skills s INNER JOIN applications a ON a.application_id = s.application_id WHERE s.application_id = $1 ORDER BY s.created_at DESC', 
         [request.params.id], 
@@ -45,7 +59,5 @@ const deleteSkill = (request, response) => {
 };
 
 module.exports = {
-    getSkills,
-    createSkills,
-    deleteSkills,
+    getSkills
 };
