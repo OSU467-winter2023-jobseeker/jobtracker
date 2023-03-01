@@ -2,9 +2,6 @@ import React from 'react';
 import { Box, Text, Heading, Card, CardBody, CardHeader } from '@chakra-ui/react';
 
 function SkillsRow({ skill }) {
-    console.log('Skill:');
-    console.log(skill);
-
     return (
         <Card align='left' variant='outline' size='md' backgroundColor='aliceblue' borderWidth='thick' w='50%'>
             <CardHeader>

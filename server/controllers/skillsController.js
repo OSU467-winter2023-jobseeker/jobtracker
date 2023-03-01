@@ -2,6 +2,9 @@ const authorization = require('../middleware/authorization');
 const Pool = require('../db/db');
 const pool = Pool.pool;
 
+/**
+ * Get all skills for the user along with some data on their frequency.
+ */
 async function getSkills (request, response) {
     const userId = await authorization.checkToken(request, true);
     var applications = [];
@@ -81,23 +84,11 @@ async function createSkill (applicationId, skill) {
     );
 };
 
-
 /**
- * Take the string of skills inserted into applications and 
- * create a new Skill object for each.
- */
-async function deleteSkills (applicationId, skills) {
-    const skillList = skills.split(', ');
-    for (const skill in skillList) {
-        const newSkill = await deleteSkill(applicationId, skillList[skill]);
-    }
-}
-
-/**
- * Create all skills with the given.
+ * Delete all skills with the given application_id.
  */
 async function deleteSkills (applicationId) {
-    pool.query('DELETE FROM skills WHERE application_id = $1', 
+    pool.query('DELETE FROM skills WHERE application_id = $1',
         [applicationId], 
         (error, results) => {
             if (error) {

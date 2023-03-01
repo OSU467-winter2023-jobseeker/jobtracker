@@ -45,6 +45,9 @@ const updateApplications = (request, response) => {
             if (error) {
                 throw error
             }
+            skills.deleteSkills(id);
+            skills.createSkills(id, data.skills);
+
             response.status(200).send(`Application modified with ID: ${id}`);
         }
     );
@@ -53,7 +56,7 @@ const updateApplications = (request, response) => {
 const deleteApplications = (request, response) => {
     const id = parseInt(request.params.id)
 
-    const deleteSkillsResult = skills.deleteSkills(id);
+    skills.deleteSkills(id);
 
     pool.query('DELETE FROM applications WHERE application_id = $1', [id], (error, results) => {
         if (error) {
