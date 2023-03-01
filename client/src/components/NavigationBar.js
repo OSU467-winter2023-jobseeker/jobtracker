@@ -264,7 +264,7 @@ import LoginButtons from './Buttons/LoginButtons';
           {
             label: 'Job Skills',
             subLabel: 'View a table list of your job skills',
-            href: '/api',
+            href: '/skills',
           },
           {
             label: 'Add New Job Skill',

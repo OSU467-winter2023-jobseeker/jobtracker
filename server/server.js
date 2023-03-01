@@ -2,6 +2,7 @@ const login = require('./routes/login');
 const applications = require('./routes/applications');
 const contacts = require('./routes/contacts');
 const users = require('./routes/users');
+const skills = require('./routes/skills');
 
 const express = require('express');
 const cors = require('cors');
@@ -28,7 +29,8 @@ app.use(
 app.use('/login', login);
 app.use('/applications', applications);
 app.use('/contacts', contacts);
-app.use('/users', users); 
+app.use('/users', users);
+app.use('/skills', skills);
 
 app.listen(PORT, () => (
     console.log(`Server started on port ${PORT}`)

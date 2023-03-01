@@ -19,7 +19,6 @@ const OAUTH2CLIENT = new google.auth.OAuth2(
     // REDIRECT_URL
 );
 
-
 /**
  * Use the Google API to verify the JWT of the request.
  * Structure and code based on the example from the 
@@ -50,8 +49,11 @@ function verifyJwt (req) {
 /**
  * Use the jsonwebtoken API to verify the token passed in
  * as a header field of the request.
+ * 
+ * Can return the sub field of the token if the returnId 
+ * parameter is given as true.
  */
-async function checkToken (req) {
+async function checkToken (req, returnId=false) {
     token = '';
 
     if (req.headers.authorization !== undefined) {
@@ -59,54 +61,18 @@ async function checkToken (req) {
         token = req.headers.authorization.substr(7);
     };
 
-    return jwt.verify(token, process.env.CLIENT_SECRET), (error, decoded) => {
+    return jwt.verify(token, process.env.CLIENT_SECRET, (error, decoded) => {
         if (error) {
             throw error;
+        } else if (returnId) {
+            return decoded.sub;
         } else {
             return;
         }
-    }
-};
-
-/**
- * Use the Google API to create a URL that contains a request
- * page for the user's Google account data.
- */
-function getAuthorizationUrl() {
-    const authorizationUrl = OAUTH2CLIENT.generateAuthUrl({
-        'access_type': 'online',
-        'scope': 'profile',
-        'include_granted_scopes': true
     });
-
-    return authorizationUrl;
 };
-
-/**
- * Use the Google API to request a token from the authorization
- * Send a POST request to the Google token authorization page
- * using the code recently received from the server
- */
-function getServerToken(req) {
-    // Uses the URL API to extract the oauth code, rather than the 
-    // deprecated query method suggested by the Google API docs.
-    // API doc: https://developer.mozilla.org/en-US/docs/Web/API/URL_API
-    const returnedUrl = url.parse(req.url, true).query;
-
-    return OAUTH2CLIENT.getToken(returnedUrl.code)
-        .then(response => {
-            OAUTH2CLIENT.setCredentials({ response });
-            return response.tokens;
-        })
-        .catch(error => {
-            throw error;
-        });
-};
-
 
 module.exports = {
-    getAuthorizationUrl,
-    getServerToken,
     verifyJwt,
     checkToken
 };

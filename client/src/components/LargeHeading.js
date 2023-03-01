@@ -3,8 +3,7 @@ import { Heading } from '@chakra-ui/react';
 function LargeHeading ({ text }) { 
     return (
         <Heading 
-            as='h1' 
-            size='4xl' 
+            fontSize='6xl'
             align='center'>
             {text}
         </Heading>
