@@ -12,7 +12,7 @@ import {
     TableContainer,
 } from '@chakra-ui/react'
 
-function ReadOnlyContactsRow({ data, onDelete, onEdit }) {
+function ReadOnlyContactsRow({ data, onDelete, onEdit, key }) {
     // Pass in contacts, handler for edit, handler for delete
     const id = data.contact_id;
 
@@ -26,7 +26,7 @@ function ReadOnlyContactsRow({ data, onDelete, onEdit }) {
         })
     }
     return (
-        <Tr>
+        <Tr key={key}>
             <Td>{data.full_name}</Td>
             <Td>{data.position}</Td>
             <Td>{data.email}</Td>
