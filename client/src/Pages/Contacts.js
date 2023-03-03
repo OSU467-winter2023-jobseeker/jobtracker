@@ -48,8 +48,9 @@ function Contacts({ loadContacts, contacts, setContacts }) {
         if (response.status === 201) {
             alert("Successfully added a new contact!");
             newContactsList.push(newAddContact);
-            setContacts([...contacts, ...newContactsList]);
+            // setContacts([...contacts, ...newContactsList]);
             clearAddContact();
+            window.location.reload();
 
         } else {
             alert(`Failed to add contact, status code = ${response.status}`)
