@@ -5,7 +5,7 @@ import {
     Td,
 } from '@chakra-ui/react'
 
-function ReadOnlyJobAppsRow({data, onDelete, onEdit}) {
+function ReadOnlyJobAppsRow({data, onDelete, onEdit, key}) {
     // Pass in contacts, handler for edit, handler for delete
     const id = data.application_id;
 
@@ -20,7 +20,7 @@ function ReadOnlyJobAppsRow({data, onDelete, onEdit}) {
         })
 	};
     return (
-        <Tr>
+        <Tr key={key}>
             <Td>{data.employer}</Td>
             <Td>{data.employment_type}</Td>
             <Td>{data.application_status}</Td>
