@@ -59,8 +59,9 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
             alert("Successfully added a new application!");
             newJobApplicationList.push(newJobApplication);
 
-            setJobApplications([...jobApplications, ...newJobApplicationList]);
+            // setJobApplications([...jobApplications, ...newJobApplicationList]);
             clearAddJobApplication();
+            window.location.reload();
         } else {
             alert(`Failed to add application, status code = ${response.status}`);
         }

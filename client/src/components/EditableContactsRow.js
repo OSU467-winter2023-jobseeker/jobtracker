@@ -3,10 +3,10 @@ import { Button, Center, Input, InputGroup, Tr, Td, } from '@chakra-ui/react';
 
 
 
-function EditableContactsRow({ editContactFormValues, setContactAppFormValues, handleCancelClick }) {
+function EditableContactsRow({ editContactFormValues, setContactAppFormValues, handleCancelClick, key }) {
     // Pass in onChange handler and onSubmit
     return (
-        <Tr>
+        <Tr key={key}>
             <Td>
                 <Input
                     type="text"
