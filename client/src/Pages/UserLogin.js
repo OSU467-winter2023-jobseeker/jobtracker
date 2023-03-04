@@ -11,7 +11,6 @@ function UserLogin({ user, setUser }) {
                 'Authorization': 'Bearer ' + response.credential,
                 "Content-Type": "application/json"
             },
-            // body: JSON.stringify({ jwt: response.credential })
         });
         const userData = await res.json();
         localStorage.setItem('user', JSON.stringify(userData));

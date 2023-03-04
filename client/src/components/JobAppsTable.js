@@ -13,7 +13,6 @@ import ReadOnlyJobAppsRow from './ReadOnlyJobAppsRow';
 import EditableJobAppsRow from './EditableJobAppsRow';
 import { Fragment, useState } from 'react';
 
-
 function JobAppsTable({ jobApplications, setJobApplications }) {
     const [editID, setEditID] = useState(null);
     const [editAppFormValues, setEditAppFormValues] = useState({
