@@ -8,7 +8,7 @@ function Skills ({}) {
 
     const loadSkills = async (response) => {
         const user = JSON.parse(localStorage.getItem('user'));
-        var res = await fetch('/skills', {
+        var res = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + '/skills', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + user.token,

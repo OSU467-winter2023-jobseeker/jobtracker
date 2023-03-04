@@ -1,0 +1,6 @@
+dispatch:
+  - url: "backend-dot-job-tracker-capstone.uk.r.appspot.com/*"
+    service: backend
+
+  - url: "job-tracker-capstone.uk.r.appspot.com/*"
+    service: default

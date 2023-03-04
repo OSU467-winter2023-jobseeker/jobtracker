@@ -38,7 +38,7 @@ function Contacts({ loadContacts, contacts, setContacts }) {
         const newContactsList = [...contacts];
         const newAddContact = { ...addContact };
 
-        const response = await fetch("/contacts", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + "/contacts", {
             method: "POST",
             body: JSON.stringify(newAddContact),
             headers: {

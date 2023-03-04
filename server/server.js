@@ -8,12 +8,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = 5001;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
-    methods: 'GET, PUT, POST, DELETE, OPTIONS'
+    origin: '*'
 }));
 app.use(
   bodyParser.urlencoded({
@@ -21,17 +20,12 @@ app.use(
   })
 );
 
-// Used for app deployment 
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "build", "index.html"));
-//   })
-
 app.use('/login', login);
 app.use('/applications', applications);
 app.use('/contacts', contacts);
 app.use('/users', users);
 app.use('/skills', skills);
 
-app.listen(PORT, () => (
-    console.log(`Server started on port ${PORT}`)
+app.listen(port, () => (
+    console.log(`Server started on port ${port}`)
     ))

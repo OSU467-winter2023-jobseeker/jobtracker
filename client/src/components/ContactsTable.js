@@ -61,7 +61,7 @@ function ContactsTable({ contacts, setContacts }) {
             linkedin_url: editContactFormValues.linkedin_url
         };
 
-        const response = await fetch(`contacts/${id}`, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `contacts/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedContacts),
             headers: {

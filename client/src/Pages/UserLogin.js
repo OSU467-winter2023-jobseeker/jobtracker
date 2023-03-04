@@ -5,7 +5,7 @@ import LargeHeading from '../components/LargeHeading';
 function UserLogin({ user, setUser }) {
 
     const handleCredentialResponse = async (response) => {
-        var res = await fetch('/login', {
+        var res = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + '/login', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + response.credential,
