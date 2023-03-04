@@ -229,53 +229,16 @@ import LoginButtons from './Buttons/LoginButtons';
   
   const NAV_ITEMS = [
     {
-      label: 'Jobs',
-      children: [
-        {
-          label: 'Job Applications List',
-          subLabel: 'View a table list of your job applications',
-          href: '/applications',
-        },
-        {
-          label: 'Add New Job Application',
-          subLabel: 'Add new job application',
-          href: '/#',
-        },
-      ],
+      label: 'Jobs Apps',
+      href: '/applications',
     },
     {
-      label: 'Contacts',
-      children: [
-        {
-          label: 'Job Contacts',
-          subLabel: 'View a table list of your job contacts',
-          href: '/contacts',
-        },
-        {
-          label: 'Add New Job Contact',
-          subLabel: 'Add new job contact',
-          href: '#',
-        },
-      ],
+      label: 'Contacts', 
+      href: '/contacts',
     },
     {
         label: 'Skills',
-        children: [
-          {
-            label: 'Job Skills',
-            subLabel: 'View a table list of your job skills',
-            href: '/skills',
-          },
-          {
-            label: 'Add New Job Skill',
-            subLabel: 'Add new job skill',
-            href: '#',
-          },
-          {
-            label: 'Analytics',
-            subLabel: 'View analytics on skills associated with your applied jobs',
-            href: '#',
-          },
-        ],
+        href: '/skills'
+
       },
   ];

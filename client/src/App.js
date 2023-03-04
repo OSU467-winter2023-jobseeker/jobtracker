@@ -101,13 +101,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-      {/* {(typeof backendData.testData === 'undefined') ? (
-          <p>Loading...</p>
-        ): (
-          backendData.testData.map((test, i) => (
-            <p key={i}>{test}</p>
-          ))
-        )} */}
+
     </ChakraProvider>
   );
 }
