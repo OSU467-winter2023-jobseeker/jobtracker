@@ -1,8 +1,10 @@
 import { Flex, VStack, Text, Heading } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LargeHeading from '../components/LargeHeading';
 
 function UserLogin({ user, setUser }) {
+    const navigate = useNavigate();
 
     const handleCredentialResponse = async (response) => {
         var res = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + '/login', {
@@ -15,7 +17,9 @@ function UserLogin({ user, setUser }) {
         const userData = await res.json();
         localStorage.setItem('user', JSON.stringify(userData));
         if (res.status === 200) {
-            alert('You are now logged in! Welcome!')
+            // alert('You are now logged in! Welcome!')
+            console.log(userData);
+            navigate('/', userData);
         } else {
             alert('Failed to log in - please try again.')
         }

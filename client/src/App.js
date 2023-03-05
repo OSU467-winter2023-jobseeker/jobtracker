@@ -74,7 +74,6 @@ function App() {
           <Routes>
             <Route path='/'
               element={<Landing
-                user={user}
               />}></Route>
             <Route path='/login'
               element={<UserLogin

@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import LandingRow from '../components/LandingRow';
 import LargeHeading from '../components/LargeHeading';
 
-function Landing({ user }) { 
-    const [userLoggedIn, setUserLoggedIn] = useState(localStorage.getItem('user'));
+function Landing() { 
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-    if (!userLoggedIn) {
+    if (!user) {
         return <Navigate replace to='/login' />;
     } else {
         return (
