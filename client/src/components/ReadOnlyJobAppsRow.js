@@ -9,16 +9,20 @@ function ReadOnlyJobAppsRow({data, onDelete, onEdit, key}) {
     // Pass in contacts, handler for edit, handler for delete
     const id = data.application_id;
 
-    const handleDelete = (e, id) => {
+    const handleDelete = async (e, id) => {
         e.preventDefault();
         // console.log(id);
-		fetch(`applications/${id}`, { method: "DELETE" })
-        .then(r => {
-            if(r.status === 200){
-                onDelete(id)
-            }
-        })
+		const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/applications/${id}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+            })
+            .then(r => {
+                if(r.status === 200){
+                    onDelete(id)
+                }
+            });
 	};
+
     return (
         <Tr key={key}>
             <Td>{data.employer}</Td>

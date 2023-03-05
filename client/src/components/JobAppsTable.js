@@ -13,7 +13,6 @@ import ReadOnlyJobAppsRow from './ReadOnlyJobAppsRow';
 import EditableJobAppsRow from './EditableJobAppsRow';
 import { Fragment, useState } from 'react';
 
-
 function JobAppsTable({ jobApplications, setJobApplications }) {
     const [editID, setEditID] = useState(null);
     const [editAppFormValues, setEditAppFormValues] = useState({
@@ -72,7 +71,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             date_applied: editAppFormValues.date_applied,
         };
 
-        const response = await fetch(`applications/${id}`, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `applications/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedApplication),
             headers: {

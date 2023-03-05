@@ -48,7 +48,7 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
         const newJobApplicationList =  [...jobApplications];
         const newJobApplication = {...addJobApplication};
         
-        const response = await fetch("/applications", {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + "/applications", {
             method: "POST",
             body: JSON.stringify(newJobApplication),
             headers: {

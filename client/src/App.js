@@ -33,7 +33,7 @@ function App() {
   const loadJobApplications = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const response = await fetch(`/applications/${user.user_id}`, {
+    const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/applications/${user.user_id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -51,7 +51,7 @@ function App() {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
-    const response = await fetch(`/contacts/${user.user_id}`);
+    const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/contacts/${user.user_id}`);
     const data = await response.json();
     if (response.status === 200) {
       setContacts(data);
@@ -74,7 +74,6 @@ function App() {
           <Routes>
             <Route path='/'
               element={<Landing
-                user={user}
               />}></Route>
             <Route path='/login'
               element={<UserLogin
