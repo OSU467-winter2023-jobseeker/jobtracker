@@ -44,10 +44,7 @@ function SkillsRow({ skill, id }) {
             alert('Error - skill failed to be updated!');
         }
     };
-
-
-
-
+    
     return (
         <Card key={id} align='left' variant='outline' size='md' backgroundColor='aliceblue' borderWidth='thick' w='70%'>
             <Stack direction='horizontal' spacing='5' align='start'>

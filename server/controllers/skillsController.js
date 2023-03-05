@@ -66,7 +66,7 @@ async function updateSkills (request, response) {
     const data = request.body;
 
     pool.query('UPDATE skills SET comfort_level = $1 from applications where skills.skill = $2 and applications.application_id = skills.application_id and applications.user_id = $3',
-        [data.comfortLevel, data.skill, userId],
+        [data.comfortLevel, data.skill.toLowerCase(), userId],
         (error, results) => {
             if (error) {
                 throw error;
@@ -92,7 +92,7 @@ async function createSkills (applicationId, skills) {
  */
 async function createSkill (applicationId, skill) {
     pool.query('INSERT INTO skills (application_id, skill, comfort_level) VALUES ($1, $2, $3)',
-        [applicationId, skill, 'No experience'],
+        [applicationId, skill.toLowerCase(), 'No experience'],
         (error, results) => {
             if (error) {
                 throw error;
