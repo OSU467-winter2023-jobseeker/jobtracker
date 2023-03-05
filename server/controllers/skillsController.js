@@ -7,7 +7,6 @@ const pool = Pool.pool;
  */
 async function getSkills (request, response) {
     const userId = await authorization.checkToken(request, true);
-    var applications = [];
 
     pool.query('SELECT s.skill, a.employer FROM skills s INNER JOIN (SELECT a.application_id, a.employer FROM applications a WHERE a.user_id = $1) a ON a.application_id = s.application_id ORDER BY s.created_at DESC',
         [userId],
@@ -56,6 +55,24 @@ function analyzeSkills (skillsQuery) {
     }
 
     return skillsResults;
+};
+
+/**
+ * Update all skills for the user that .
+ */
+async function updateSkills (request, response) {
+    const userId = await authorization.checkToken(request, true);
+    const data = request.body;
+
+    pool.query('UPDATE skills SET comfort_level = $1 from applications where skills.skill = $2 and applications.application_id = skills.application_id and applications.user_id = $3',
+        [data.comfortLevel, data.skill, userId],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).json(results.rows);
+    });
+
 };
 
 /**
