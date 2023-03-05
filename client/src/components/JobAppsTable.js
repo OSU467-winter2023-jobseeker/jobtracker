@@ -71,7 +71,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             date_applied: editAppFormValues.date_applied,
         };
 
-        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `applications/${id}`, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/applications/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedApplication),
             headers: {
