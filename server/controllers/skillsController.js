@@ -15,7 +15,6 @@ async function getSkills (request, response) {
                 throw error;
             }
             const skillsResults = analyzeSkills(results.rows);
-            console.log(skillsResults);
             response.status(200).json(skillsResults);
     });
 

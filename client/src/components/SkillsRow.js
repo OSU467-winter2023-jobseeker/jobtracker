@@ -10,10 +10,12 @@ import { Box,
     Stack,
     Button,
     Container,
-    useToast
+    useToast,
+    createStandaloneToast
 } from '@chakra-ui/react';
 
 function SkillsRow({ skill, id }) {
+    const { ToastContainer, toast } = createStandaloneToast();
     const [skillComfort, setSkillComfort] = useState({
         skill: '',
         comfortLevel: ''
@@ -32,9 +34,14 @@ function SkillsRow({ skill, id }) {
         const skills = await res.json();
         console.log(skills);
         if (res.status === 200) {
-            alert('Skill has been updated!')
+            return toast({
+                title: `${skill.skill} has been updated!`,
+                status: 'success',
+                duration: 5000,
+                isClosable: true
+            });
         } else {
-            alert('Error - skill failed to be updated!')
+            alert('Error - skill failed to be updated!');
         }
     };
 
@@ -81,6 +88,7 @@ function SkillsRow({ skill, id }) {
                     </RadioGroup>
                 </Container>
             </Stack>
+            <ToastContainer></ToastContainer>
         </Card>
     )
 };
