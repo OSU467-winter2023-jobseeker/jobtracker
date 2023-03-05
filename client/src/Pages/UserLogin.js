@@ -14,9 +14,11 @@ function UserLogin({ user, setUser }) {
         });
         const userData = await res.json();
         localStorage.setItem('user', JSON.stringify(userData));
-        // .catch(error => {
-        //     return error;
-        // });
+        if (res.status === 200) {
+            alert('You are now logged in! Welcome!')
+        } else {
+            alert('Failed to log in - please try again.')
+        }
     };
 
     useEffect(() => {
