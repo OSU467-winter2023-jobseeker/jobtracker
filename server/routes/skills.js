@@ -3,6 +3,6 @@ const router = express.Router();
 const skillsController = require('../controllers/skillsController');
 
 router.get('/', skillsController.getSkills);
-router.post('/', skill.updateSkills);
+router.put('/', skillsController.updateSkills);
 
 module.exports = router;

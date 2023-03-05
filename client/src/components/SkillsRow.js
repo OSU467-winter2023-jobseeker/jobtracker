@@ -8,25 +8,37 @@ import { Box,
     RadioGroup,
     Radio, 
     Stack,
-    useRadioGroup,
-    Container
+    Button,
+    Container,
+    useToast
 } from '@chakra-ui/react';
 
 function SkillsRow({ skill, id }) {
-    const [skillComfort, setSkillComfort] = useState([]);
+    const [skillComfort, setSkillComfort] = useState({
+        skill: '',
+        comfortLevel: ''
+    });
 
-    const updateSkillComfort = async (response) => {
+    const handleComfortSubmit = async () => {
         const user = JSON.parse(localStorage.getItem('user'));
         var res = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + '/skills', {
-            method: 'GET',
+            method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json"
             },
-        });
+            body: JSON.stringify(skillComfort)
+        })
         const skills = await res.json();
-        setSkillComfort(skills);
+        console.log(skills);
+        if (res.status === 200) {
+            alert('Skill has been updated!')
+        } else {
+            alert('Error - skill failed to be updated!')
+        }
     };
+
+
 
 
     return (
@@ -52,7 +64,9 @@ function SkillsRow({ skill, id }) {
                     </Container>
                 </CardBody>
                 <Container alignContent='right' verticalAlign='center' p='5'>
-                    <RadioGroup onChange={updateSkillComfort} alignItems='center' defaultValue='No experience'>
+                    <RadioGroup onChange={(value) => setSkillComfort({ skill: skill.skill, comfortLevel: value })} 
+                        alignItems='center'
+                        defaultValue={skill.comfortLevel}>
                         <Text fontSize='lg'><b>My comfort with this skill:</b></Text>
                         <Stack direction='column'>
                             <Radio value='No experience'>No experience</Radio>
@@ -61,6 +75,9 @@ function SkillsRow({ skill, id }) {
                             <Radio value='Significant experience'>Significant experience</Radio>
                             <Radio value='Mastery'>Mastery</Radio>
                         </Stack>
+                        <Button colorScheme='teal' variant='solid' margin={2} size='md' onClick={handleComfortSubmit}>
+                            Save my experience
+                        </Button>
                     </RadioGroup>
                 </Container>
             </Stack>

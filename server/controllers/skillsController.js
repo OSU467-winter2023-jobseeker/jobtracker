@@ -8,13 +8,14 @@ const pool = Pool.pool;
 async function getSkills (request, response) {
     const userId = await authorization.checkToken(request, true);
 
-    pool.query('SELECT s.skill, a.employer FROM skills s INNER JOIN (SELECT a.application_id, a.employer FROM applications a WHERE a.user_id = $1) a ON a.application_id = s.application_id ORDER BY s.created_at DESC',
+    pool.query('SELECT s.skill, s.comfort_level, a.employer FROM skills s INNER JOIN (SELECT a.application_id, a.employer FROM applications a WHERE a.user_id = $1) a ON a.application_id = s.application_id ORDER BY s.created_at DESC',
         [userId],
         (error, results) => {
             if (error) {
-                throw error
+                throw error;
             }
             const skillsResults = analyzeSkills(results.rows);
+            console.log(skillsResults);
             response.status(200).json(skillsResults);
     });
 
@@ -36,7 +37,8 @@ function analyzeSkills (skillsQuery) {
         if (!(currentSkill in skillsResults)) {
             skillsResults[currentSkill] = {
                 skill: currentSkill,
-                skillPercent: 1, 
+                skillPercent: 1,
+                comfortLevel: skillsQuery[skillPair].comfort_level,
                 applications: [currentEmployer
             ]};
         } else {
@@ -58,7 +60,7 @@ function analyzeSkills (skillsQuery) {
 };
 
 /**
- * Update all skills for the user that .
+ * Update the comfort level of all skill objects that match the given skill..
  */
 async function updateSkills (request, response) {
     const userId = await authorization.checkToken(request, true);
@@ -68,7 +70,7 @@ async function updateSkills (request, response) {
         [data.comfortLevel, data.skill, userId],
         (error, results) => {
             if (error) {
-                throw error
+                throw error;
             }
             response.status(200).json(results.rows);
     });
@@ -84,14 +86,14 @@ async function createSkills (applicationId, skills) {
     for (const skill in skillList) {
         const newSkill = await createSkill(applicationId, skillList[skill]);
     }
-}
+};
 
 /**
  * Create a single new skill entity.
  */
 async function createSkill (applicationId, skill) {
     pool.query('INSERT INTO skills (application_id, skill, comfort_level) VALUES ($1, $2, $3)',
-        [applicationId, skill, '5'],
+        [applicationId, skill, 'No experience'],
         (error, results) => {
             if (error) {
                 throw error;
@@ -119,5 +121,6 @@ async function deleteSkills (applicationId) {
 module.exports = {
     getSkills,
     createSkills,
-    deleteSkills
+    deleteSkills,
+    updateSkills
 };
