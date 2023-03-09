@@ -19,7 +19,7 @@ function ReadOnlyContactsRow({ data, onDelete, onEdit, key }) {
     const handleDelete = (e, id) =>  {
         const user = JSON.parse(localStorage.getItem('user'));
         e.preventDefault();
-        fetch(process.env.REACT_APP_BACKEND_ADDRESS + `contacts/${id}`, {
+        fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/contacts/${id}`, {
             method: "DELETE",
             headers: {
                 'Authorization': 'Bearer ' + user.token,

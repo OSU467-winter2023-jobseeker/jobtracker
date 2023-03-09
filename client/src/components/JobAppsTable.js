@@ -57,6 +57,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
     const handleEditSubmitForm = async (e) => {
         e.preventDefault();
         const id = editID;
+        const user = JSON.parse(localStorage.getItem('user'));
 
         const editedApplication = {
             id: editID,
@@ -75,6 +76,7 @@ function JobAppsTable({ jobApplications, setJobApplications }) {
             method: "PUT",
             body: JSON.stringify(editedApplication),
             headers: {
+                'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json",
             }
         })
