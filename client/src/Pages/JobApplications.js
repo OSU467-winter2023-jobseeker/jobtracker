@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup, Button } from '@chakra-ui/react';
+import { Box, Center, VStack, Divider, Button } from '@chakra-ui/react';
 import JobAppsTable from '../components/JobAppsTable';
 import AddJobAppsRow from '../components/AddJobAppsRow';
 import { useEffect, useState } from 'react';

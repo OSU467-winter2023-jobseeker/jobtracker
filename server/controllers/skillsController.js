@@ -62,7 +62,7 @@ function analyzeSkills (skillsQuery) {
  * Update the comfort level of all skill objects that match the given skill..
  */
 async function updateSkills (request, response) {
-    const userId = await authorization.checkToken(request, true);
+    const userId = await authorization.getUserId(request, true);
     const data = request.body;
 
     pool.query('UPDATE skills SET comfort_level = $1 from applications where skills.skill = $2 and applications.application_id = skills.application_id and applications.user_id = $3',
