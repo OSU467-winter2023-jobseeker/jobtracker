@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, VStack, Text, Heading, Divider, InputGroup, Button } from '@chakra-ui/react';
+import { Box, Center, VStack, Divider, Button } from '@chakra-ui/react';
 import JobAppsTable from '../components/JobAppsTable';
 import AddJobAppsRow from '../components/AddJobAppsRow';
 import { useEffect, useState } from 'react';
@@ -52,9 +52,10 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
             method: "POST",
             body: JSON.stringify(newJobApplication),
             headers: {
+                'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json",
             }
-        })
+        });
         if (response.status === 201) {
             alert("Successfully added a new application!");
             newJobApplicationList.push(newJobApplication);

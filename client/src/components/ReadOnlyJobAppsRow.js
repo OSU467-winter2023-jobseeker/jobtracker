@@ -10,11 +10,15 @@ function ReadOnlyJobAppsRow({data, onDelete, onEdit, key}) {
     const id = data.application_id;
 
     const handleDelete = async (e, id) => {
+        const user = JSON.parse(localStorage.getItem('user'));
         e.preventDefault();
         // console.log(id);
 		const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/applications/${id}`, {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" }
+            headers: {
+                'Authorization': 'Bearer ' + user.token,
+                "Content-Type": "application/json"
+            }
             })
             .then(r => {
                 if(r.status === 200){

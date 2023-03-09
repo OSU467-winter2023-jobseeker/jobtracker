@@ -51,6 +51,7 @@ function ContactsTable({ contacts, setContacts }) {
     const handleEditSubmitForm = async (e) => {
         e.preventDefault();
         const id = editID;
+        const user = JSON.parse(localStorage.getItem('user'));
 
         const editedContacts = {
             id: editID,
@@ -61,10 +62,11 @@ function ContactsTable({ contacts, setContacts }) {
             linkedin_url: editContactFormValues.linkedin_url
         };
 
-        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `contacts/${id}`, {
+        const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/contacts/${id}`, {
             method: "PUT",
             body: JSON.stringify(editedContacts),
             headers: {
+                'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json",
             }
         })

@@ -6,7 +6,6 @@ const { format } = require('date-fns');
 
 const getApplications = (request, response) => {
     pool.query('SELECT a.* FROM applications a INNER JOIN users u ON u.user_id = a.user_id WHERE a.user_id = $1 ORDER BY a.created_at DESC', [request.params.id], (error, results) => {
-        // console.log(request);
         if (error) {
             throw error
         }
@@ -54,7 +53,7 @@ const updateApplications = (request, response) => {
 };
 
 const deleteApplications = (request, response) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(request.params.id);
 
     skills.deleteSkills(id);
 

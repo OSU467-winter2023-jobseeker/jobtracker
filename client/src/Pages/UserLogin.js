@@ -17,8 +17,6 @@ function UserLogin({ user, setUser }) {
         const userData = await res.json();
         localStorage.setItem('user', JSON.stringify(userData));
         if (res.status === 200) {
-            // alert('You are now logged in! Welcome!')
-            console.log(userData);
             navigate('/', userData);
         } else {
             alert('Failed to log in - please try again.')
