@@ -1,4 +1,4 @@
-import { VStack, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import LargeHeading from '../components/LargeHeading';
 import SkillsCard from '../components/SkillsCard';
@@ -16,7 +16,12 @@ function Skills ({}) {
             },
         });
         const skills = await res.json();
-        setSkillsData(skills);
+        if (res.status === 200) {
+            setSkillsData(skills);
+        } else {
+            alert('Error - please log in to continue');
+        }
+        
     };
 
     useEffect(() => {

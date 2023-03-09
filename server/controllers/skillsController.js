@@ -6,7 +6,7 @@ const pool = Pool.pool;
  * Get all skills for the user along with some data on their frequency.
  */
 async function getSkills (request, response) {
-    const userId = await authorization.checkToken(request, true);
+    const userId = await authorization.getUserId(request);
 
     pool.query('SELECT s.skill, s.comfort_level, a.employer FROM skills s INNER JOIN (SELECT a.application_id, a.employer FROM applications a WHERE a.user_id = $1) a ON a.application_id = s.application_id ORDER BY s.created_at DESC',
         [userId],

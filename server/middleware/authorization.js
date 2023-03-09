@@ -46,14 +46,12 @@ function verifyJwt (req) {
             throw new Error('Missing or invalid JWT');
         });
 };
+
 /**
  * Use the jsonwebtoken API to verify the token passed in
  * as a header field of the request.
- * 
- * Can return the sub field of the token if the returnId 
- * parameter is given as true.
  */
-async function checkToken (req, returnId=false) {
+async function checkToken (req, res, next) {
     token = '';
 
     if (req.headers.authorization !== undefined) {
@@ -64,15 +62,37 @@ async function checkToken (req, returnId=false) {
     return jwt.verify(token, process.env.CLIENT_SECRET, (error, decoded) => {
         if (error) {
             throw error;
-        } else if (returnId) {
-            return decoded.sub;
         } else {
-            return;
+            next();
+        }
+    });
+};
+
+/**
+ * Use the jsonwebtoken API to decode the token passed in
+ * as a header field of the request.
+ * 
+ * Returns the sub field of the token.
+ */
+async function getUserId (req) {
+    token = '';
+
+    if (req.headers.authorization !== undefined) {
+        // remove the bearer suffix
+        token = req.headers.authorization.substr(7);
+    };
+
+    return jwt.verify(token, process.env.CLIENT_SECRET, (error, decoded) => {
+        if (error) {
+            throw error;
+        } else {
+            return decoded.sub;
         }
     });
 };
 
 module.exports = {
     verifyJwt,
-    checkToken
+    checkToken,
+    getUserId
 };
