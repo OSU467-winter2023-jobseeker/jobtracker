@@ -42,9 +42,10 @@ function Contacts({ loadContacts, contacts, setContacts }) {
             method: "POST",
             body: JSON.stringify(newAddContact),
             headers: {
+                'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json",
             }
-        })
+        });
         if (response.status === 201) {
             alert("Successfully added a new contact!");
             newContactsList.push(newAddContact);

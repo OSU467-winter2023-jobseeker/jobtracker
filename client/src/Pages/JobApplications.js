@@ -52,9 +52,10 @@ function JobApplications({ jobApplications, setJobApplications, loadJobApplicati
             method: "POST",
             body: JSON.stringify(newJobApplication),
             headers: {
+                'Authorization': 'Bearer ' + user.token,
                 "Content-Type": "application/json",
             }
-        })
+        });
         if (response.status === 201) {
             alert("Successfully added a new application!");
             newJobApplicationList.push(newJobApplication);

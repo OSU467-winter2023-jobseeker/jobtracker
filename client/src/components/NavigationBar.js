@@ -26,8 +26,6 @@ import LoginButtons from './Buttons/LoginButtons';
   export default function WithSubnavigation({ user, setUser }) {
     const { isOpen, onToggle } = useDisclosure();
 
-
-  
     return (
       <Box>
         <Flex

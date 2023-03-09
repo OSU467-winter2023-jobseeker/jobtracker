@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   ChakraProvider,
-  // Box,
-  // Text,
-  // Link,
-  // VStack,
-  // Code,
-  // Grid,
   theme,
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -34,8 +28,11 @@ function App() {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/applications/${user.user_id}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+        method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + user.token,
+            "Content-Type": "application/json"
+        }
     });
     const data = await response.json();
     if (response.status === 200) {
@@ -47,11 +44,14 @@ function App() {
 
   // Load Contacts Applications Data
   const loadContacts = async () => {
-    const user = JSON.parse(localStorage.getItem('user'), {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/contacts/${user.user_id}`, {
+        method: "GET",
+        headers: {
+          'Authorization': 'Bearer ' + user.token,
+          "Content-Type": "application/json"
+        }
     });
-    const response = await fetch(process.env.REACT_APP_BACKEND_ADDRESS + `/contacts/${user.user_id}`);
     const data = await response.json();
     if (response.status === 200) {
       setContacts(data);

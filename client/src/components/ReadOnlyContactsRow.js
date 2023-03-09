@@ -17,8 +17,14 @@ function ReadOnlyContactsRow({ data, onDelete, onEdit, key }) {
     const id = data.contact_id;
 
     const handleDelete = (e, id) =>  {
+        const user = JSON.parse(localStorage.getItem('user'));
         e.preventDefault();
-        fetch(process.env.REACT_APP_BACKEND_ADDRESS + `contacts/${id}`, { method: "DELETE" })
+        fetch(process.env.REACT_APP_BACKEND_ADDRESS + `contacts/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + user.token,
+            }
+        })
         .then(r => {
             if(r.status === 200){
                 onDelete(id)
